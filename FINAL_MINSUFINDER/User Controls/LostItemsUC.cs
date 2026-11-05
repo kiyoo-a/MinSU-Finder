@@ -20,8 +20,7 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         private void LostItemsUC_Load(object sender, EventArgs e)
         {
-            cmbFilter.Text = "Select an option";
-            cmbFilter.SelectedIndex = -1;
+
         }
     }
 }
