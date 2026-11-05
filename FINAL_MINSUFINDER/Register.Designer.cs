@@ -46,7 +46,7 @@
             // 
             this.txtFullName.BackColor = System.Drawing.SystemColors.Window;
             this.txtFullName.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(74, 210);
+            this.txtFullName.Location = new System.Drawing.Point(79, 209);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(314, 28);
             this.txtFullName.TabIndex = 9;
@@ -54,7 +54,7 @@
             // txtID
             // 
             this.txtID.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(74, 129);
+            this.txtID.Location = new System.Drawing.Point(79, 128);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(314, 28);
             this.txtID.TabIndex = 8;
@@ -64,7 +64,7 @@
             this.btnRegister.BackColor = System.Drawing.Color.DarkGreen;
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.ForeColor = System.Drawing.Color.Snow;
-            this.btnRegister.Location = new System.Drawing.Point(122, 539);
+            this.btnRegister.Location = new System.Drawing.Point(91, 539);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(253, 47);
             this.btnRegister.TabIndex = 12;
@@ -77,7 +77,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(70, 102);
+            this.label3.Location = new System.Drawing.Point(75, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 24);
             this.label3.TabIndex = 10;
@@ -88,7 +88,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(70, 183);
+            this.label4.Location = new System.Drawing.Point(75, 182);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 24);
             this.label4.TabIndex = 11;
@@ -109,7 +109,7 @@
             // 
             this.txtCoursereg.BackColor = System.Drawing.SystemColors.Window;
             this.txtCoursereg.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCoursereg.Location = new System.Drawing.Point(74, 358);
+            this.txtCoursereg.Location = new System.Drawing.Point(79, 357);
             this.txtCoursereg.Name = "txtCoursereg";
             this.txtCoursereg.Size = new System.Drawing.Size(314, 28);
             this.txtCoursereg.TabIndex = 15;
@@ -117,7 +117,7 @@
             // txtUserNamereg
             // 
             this.txtUserNamereg.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserNamereg.Location = new System.Drawing.Point(74, 283);
+            this.txtUserNamereg.Location = new System.Drawing.Point(79, 282);
             this.txtUserNamereg.Name = "txtUserNamereg";
             this.txtUserNamereg.Size = new System.Drawing.Size(314, 28);
             this.txtUserNamereg.TabIndex = 14;
@@ -127,7 +127,7 @@
             this.txtUsername.AutoSize = true;
             this.txtUsername.BackColor = System.Drawing.Color.Transparent;
             this.txtUsername.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(70, 256);
+            this.txtUsername.Location = new System.Drawing.Point(75, 255);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(86, 24);
             this.txtUsername.TabIndex = 16;
@@ -138,7 +138,7 @@
             this.txtCourse.AutoSize = true;
             this.txtCourse.BackColor = System.Drawing.Color.Transparent;
             this.txtCourse.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCourse.Location = new System.Drawing.Point(70, 331);
+            this.txtCourse.Location = new System.Drawing.Point(75, 330);
             this.txtCourse.Name = "txtCourse";
             this.txtCourse.Size = new System.Drawing.Size(62, 24);
             this.txtCourse.TabIndex = 17;
@@ -147,7 +147,7 @@
             // txtPasswordreg
             // 
             this.txtPasswordreg.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPasswordreg.Location = new System.Drawing.Point(74, 446);
+            this.txtPasswordreg.Location = new System.Drawing.Point(79, 445);
             this.txtPasswordreg.Name = "txtPasswordreg";
             this.txtPasswordreg.Size = new System.Drawing.Size(314, 28);
             this.txtPasswordreg.TabIndex = 18;
@@ -157,7 +157,7 @@
             this.txtPassword.AutoSize = true;
             this.txtPassword.BackColor = System.Drawing.Color.Transparent;
             this.txtPassword.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(70, 419);
+            this.txtPassword.Location = new System.Drawing.Point(75, 418);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(82, 24);
             this.txtPassword.TabIndex = 20;

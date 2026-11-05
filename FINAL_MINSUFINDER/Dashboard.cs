@@ -31,6 +31,19 @@ namespace FINAL_MINSUFINDER
 
             uc.BringToFront();
         }
+        private void HighlightButton(Button activeBtn)
+        {
+            
+            btnDashboard.BackColor = Color.White;
+            btnLostItems.BackColor = Color.White;
+            btnFoundItems.BackColor = Color.White;
+            btnClaims.BackColor = Color.White;
+            btnLeaderboard.BackColor = Color.White;
+            btnUsers.BackColor = Color.White;
+
+           
+            activeBtn.BackColor = Color.LightGreen;
+        }
 
 
 
@@ -42,6 +55,7 @@ namespace FINAL_MINSUFINDER
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+            HighlightButton(btnDashboard);
             pnlContent.Controls.Clear();
 
             foreach (Control control in dashboardControls)
@@ -52,16 +66,19 @@ namespace FINAL_MINSUFINDER
 
         private void btnLostItems_Click(object sender, EventArgs e)
         {
+            HighlightButton(btnLostItems);
             LoadUserControl(new LostItemsUC());
         }
 
         private void btnFoundItems_Click(object sender, EventArgs e)
         {
+            HighlightButton(btnFoundItems);
             LoadUserControl(new FoundItemsUC());
         }
 
         private void btnClaims_Click(object sender, EventArgs e)
         {
+            HighlightButton(btnClaims);
             LoadUserControl(new ClaimsUC());
         }
 
@@ -69,6 +86,7 @@ namespace FINAL_MINSUFINDER
 
         private void btnLeaderboard_Click(object sender, EventArgs e)
         {
+            HighlightButton(btnLeaderboard);
             LoadUserControl(new LeaderboardUC());
         }
 
@@ -81,6 +99,7 @@ namespace FINAL_MINSUFINDER
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
+            HighlightButton(btnUsers);
             LoadUserControl(new Users());
         }
 
