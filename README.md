@@ -1,0 +1,2 @@
+# MinSU-Finder
+POGI AKO
