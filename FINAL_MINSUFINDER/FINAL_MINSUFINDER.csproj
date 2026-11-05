@@ -192,6 +192,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\image-Photoroom %2846%29.png" />
     <None Include="Resources\Brown and Gold Vintage Project Presentation.png" />
   </ItemGroup>
   <ItemGroup />
