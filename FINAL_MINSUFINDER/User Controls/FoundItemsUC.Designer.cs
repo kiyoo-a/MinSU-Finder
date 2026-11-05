@@ -32,13 +32,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-<<<<<<< HEAD
+
             this.btnAddItem = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-=======
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+    this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
->>>>>>> 14a9856cb5d792549e57baaf67e72eafa4bb9b8b
+
             this.SuspendLayout();
             // 
             // label4
@@ -71,7 +70,7 @@
             this.comboBox2.Text = "Category";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-<<<<<<< HEAD
+
             // btnAddItem
             // 
             this.btnAddItem.Location = new System.Drawing.Point(716, 53);
@@ -88,7 +87,7 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(951, 454);
             this.flowLayoutPanel1.TabIndex = 30;
-=======
+
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
@@ -99,7 +98,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(951, 442);
             this.dataGridView1.TabIndex = 24;
->>>>>>> 14a9856cb5d792549e57baaf67e72eafa4bb9b8b
+
             // 
             // FoundItemsUC
             // 
@@ -123,11 +122,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox2;
-<<<<<<< HEAD
+
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-=======
+
         private System.Windows.Forms.DataGridView dataGridView1;
->>>>>>> 14a9856cb5d792549e57baaf67e72eafa4bb9b8b
+
     }
 }

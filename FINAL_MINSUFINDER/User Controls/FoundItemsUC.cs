@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FINAL_MINSUFINDER.Model;
-using FINAL_MINSUFINDER.Views;
+
 
 namespace FINAL_MINSUFINDER.User_Controls
 {
@@ -33,10 +33,10 @@ namespace FINAL_MINSUFINDER.User_Controls
                 {
                     Item newItem = addForm.ResultItem;
 
-                    // Gagawin ang Card gamit ang item na pinasa mula sa form
+                  
                     ItemCard card = new ItemCard(newItem);
 
-                    // Event para sa View Details at Claim
+                  
                     card.OnViewDetailsClicked += (s, ev) =>
                     {
                         MessageBox.Show($"Details:\nItem: {newItem.ItemName}\nLocation: {newItem.Location}\nDescription: {newItem.Description}",
@@ -53,7 +53,7 @@ namespace FINAL_MINSUFINDER.User_Controls
                         }
                     };
 
-                    // Idadagdag sa FlowLayoutPanel mo
+                   
                     flowLayoutPanel1.Controls.Add(card);
                 }
             }
