@@ -45,10 +45,11 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(529, 127);
+            this.textBox2.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(236, 127);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(258, 34);
+            this.textBox2.Size = new System.Drawing.Size(578, 34);
             this.textBox2.TabIndex = 29;
             // 
             // cmbCategory
@@ -67,9 +68,9 @@
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBox1.BackgroundImage = global::FINAL_MINSUFINDER.Properties.Resources.image_Photoroom__46_;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(757, 131);
+            this.pictureBox1.Location = new System.Drawing.Point(786, 131);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox1.Size = new System.Drawing.Size(25, 28);
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             // 
