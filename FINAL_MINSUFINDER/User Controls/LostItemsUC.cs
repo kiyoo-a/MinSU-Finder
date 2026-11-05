@@ -21,10 +21,6 @@ namespace FINAL_MINSUFINDER.User_Controls
         private void LostItemsUC_Load(object sender, EventArgs e)
         {
 
-           
-
-
-
         }
     }
 }

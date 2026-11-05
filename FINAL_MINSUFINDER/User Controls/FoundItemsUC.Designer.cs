@@ -32,12 +32,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-
             this.btnAddItem = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-    this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-
             this.SuspendLayout();
             // 
             // label4
@@ -70,7 +68,6 @@
             this.comboBox2.Text = "Category";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-
             // btnAddItem
             // 
             this.btnAddItem.Location = new System.Drawing.Point(716, 53);
@@ -87,7 +84,7 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(951, 454);
             this.flowLayoutPanel1.TabIndex = 30;
-
+            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
@@ -98,7 +95,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(951, 442);
             this.dataGridView1.TabIndex = 24;
-
             // 
             // FoundItemsUC
             // 
@@ -112,6 +108,7 @@
             this.Controls.Add(this.label4);
             this.Name = "FoundItemsUC";
             this.Size = new System.Drawing.Size(1038, 702);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
