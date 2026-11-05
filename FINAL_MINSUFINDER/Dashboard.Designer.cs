@@ -31,19 +31,26 @@
             Guna.Charts.WinForms.GunaDoughnutDataset gunaDoughnutDataset2;
             Guna.Charts.WinForms.LPoint lPoint1 = new Guna.Charts.WinForms.LPoint();
             Guna.Charts.WinForms.LPoint lPoint2 = new Guna.Charts.WinForms.LPoint();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             Guna.Charts.WinForms.LPoint lPoint3 = new Guna.Charts.WinForms.LPoint();
             Guna.Charts.WinForms.LPoint lPoint4 = new Guna.Charts.WinForms.LPoint();
             Guna.Charts.WinForms.LPoint lPoint5 = new Guna.Charts.WinForms.LPoint();
             Guna.Charts.WinForms.LPoint lPoint6 = new Guna.Charts.WinForms.LPoint();
             Guna.Charts.WinForms.LPoint lPoint7 = new Guna.Charts.WinForms.LPoint();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnLostItems = new System.Windows.Forms.Button();
             this.btnFoundItems = new System.Windows.Forms.Button();
             this.btnLeaderboard = new System.Windows.Forms.Button();
+            this.btnClaims = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.gunaDoughnutDataset1 = new Guna.Charts.WinForms.GunaDoughnutDataset();
+            this.gunaAreaDataset1 = new Guna.Charts.WinForms.GunaAreaDataset();
+            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
@@ -57,21 +64,14 @@
             this.lblMissingItems = new System.Windows.Forms.Label();
             this.lblFounItems = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnClaims = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnUsers = new System.Windows.Forms.Button();
-            this.gunaDoughnutDataset1 = new Guna.Charts.WinForms.GunaDoughnutDataset();
-            this.gunaAreaDataset1 = new Guna.Charts.WinForms.GunaAreaDataset();
-            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             gunaDoughnutDataset2 = new Guna.Charts.WinForms.GunaDoughnutDataset();
+            this.guna2GradientPanel1.SuspendLayout();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             this.guna2GradientPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaDoughnutDataset2
@@ -136,6 +136,108 @@
             this.btnLeaderboard.Text = "Leaderboard";
             this.btnLeaderboard.UseVisualStyleBackColor = true;
             this.btnLeaderboard.Click += new System.EventHandler(this.btnLeaderboard_Click);
+            // 
+            // btnClaims
+            // 
+            this.btnClaims.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClaims.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnClaims.Location = new System.Drawing.Point(28, 384);
+            this.btnClaims.Name = "btnClaims";
+            this.btnClaims.Size = new System.Drawing.Size(156, 39);
+            this.btnClaims.TabIndex = 7;
+            this.btnClaims.Text = "Claims";
+            this.btnClaims.UseVisualStyleBackColor = true;
+            this.btnClaims.Click += new System.EventHandler(this.btnClaims_Click);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.AutoSize = true;
+            this.btnLogout.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnLogout.Location = new System.Drawing.Point(28, 627);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(156, 39);
+            this.btnLogout.TabIndex = 8;
+            this.btnLogout.Text = "Log Out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnUsers
+            // 
+            this.btnUsers.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsers.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnUsers.Location = new System.Drawing.Point(28, 491);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(156, 39);
+            this.btnUsers.TabIndex = 9;
+            this.btnUsers.Text = "Users";
+            this.btnUsers.UseVisualStyleBackColor = true;
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
+            // 
+            // gunaDoughnutDataset1
+            // 
+            this.gunaDoughnutDataset1.BorderColors.AddRange(new System.Drawing.Color[] {
+            System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64))))),
+            System.Drawing.Color.Lime,
+            System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0))))),
+            System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))),
+            System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(33)))))});
+            lPoint3.Y = 0D;
+            lPoint4.Label = "32";
+            lPoint4.Y = 0D;
+            lPoint5.Label = "323";
+            lPoint5.Y = 0D;
+            lPoint6.Label = "3425";
+            lPoint6.Y = 0D;
+            lPoint7.Y = 0D;
+            this.gunaDoughnutDataset1.DataPoints.AddRange(new Guna.Charts.WinForms.LPoint[] {
+            lPoint3,
+            lPoint4,
+            lPoint5,
+            lPoint6,
+            lPoint7});
+            this.gunaDoughnutDataset1.FillColors.AddRange(new System.Drawing.Color[] {
+            System.Drawing.Color.Empty,
+            System.Drawing.Color.Empty,
+            System.Drawing.Color.Empty,
+            System.Drawing.Color.Empty});
+            this.gunaDoughnutDataset1.Label = "Doughnut1";
+            // 
+            // gunaAreaDataset1
+            // 
+            this.gunaAreaDataset1.BorderColor = System.Drawing.Color.Empty;
+            this.gunaAreaDataset1.FillColor = System.Drawing.Color.Empty;
+            this.gunaAreaDataset1.Label = "Area1";
+            // 
+            // guna2GradientPanel1
+            // 
+            this.guna2GradientPanel1.Controls.Add(this.guna2Panel1);
+            this.guna2GradientPanel1.Controls.Add(this.btnUsers);
+            this.guna2GradientPanel1.Controls.Add(this.btnDashboard);
+            this.guna2GradientPanel1.Controls.Add(this.btnLogout);
+            this.guna2GradientPanel1.Controls.Add(this.btnLostItems);
+            this.guna2GradientPanel1.Controls.Add(this.btnClaims);
+            this.guna2GradientPanel1.Controls.Add(this.btnFoundItems);
+            this.guna2GradientPanel1.Controls.Add(this.btnLeaderboard);
+            this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(74)))), ((int)(((byte)(39)))));
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(74)))), ((int)(((byte)(39)))));
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(214, 701);
+            this.guna2GradientPanel1.TabIndex = 22;
+            this.guna2GradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel1_Paint);
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Panel1.BackgroundImage")));
+            this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.guna2Panel1.Location = new System.Drawing.Point(12, 7);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(185, 206);
+            this.guna2Panel1.TabIndex = 25;
+            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // pnlContent
             // 
@@ -306,108 +408,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(522, 195);
             this.dataGridView1.TabIndex = 20;
             // 
-            // btnClaims
-            // 
-            this.btnClaims.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClaims.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnClaims.Location = new System.Drawing.Point(28, 384);
-            this.btnClaims.Name = "btnClaims";
-            this.btnClaims.Size = new System.Drawing.Size(156, 39);
-            this.btnClaims.TabIndex = 7;
-            this.btnClaims.Text = "Claims";
-            this.btnClaims.UseVisualStyleBackColor = true;
-            this.btnClaims.Click += new System.EventHandler(this.btnClaims_Click);
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.AutoSize = true;
-            this.btnLogout.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnLogout.Location = new System.Drawing.Point(28, 627);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(156, 39);
-            this.btnLogout.TabIndex = 8;
-            this.btnLogout.Text = "Log Out";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnUsers
-            // 
-            this.btnUsers.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsers.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnUsers.Location = new System.Drawing.Point(28, 491);
-            this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(156, 39);
-            this.btnUsers.TabIndex = 9;
-            this.btnUsers.Text = "Users";
-            this.btnUsers.UseVisualStyleBackColor = true;
-            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
-            // 
-            // gunaDoughnutDataset1
-            // 
-            this.gunaDoughnutDataset1.BorderColors.AddRange(new System.Drawing.Color[] {
-            System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64))))),
-            System.Drawing.Color.Lime,
-            System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0))))),
-            System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))),
-            System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(33)))))});
-            lPoint3.Y = 0D;
-            lPoint4.Label = "32";
-            lPoint4.Y = 0D;
-            lPoint5.Label = "323";
-            lPoint5.Y = 0D;
-            lPoint6.Label = "3425";
-            lPoint6.Y = 0D;
-            lPoint7.Y = 0D;
-            this.gunaDoughnutDataset1.DataPoints.AddRange(new Guna.Charts.WinForms.LPoint[] {
-            lPoint3,
-            lPoint4,
-            lPoint5,
-            lPoint6,
-            lPoint7});
-            this.gunaDoughnutDataset1.FillColors.AddRange(new System.Drawing.Color[] {
-            System.Drawing.Color.Empty,
-            System.Drawing.Color.Empty,
-            System.Drawing.Color.Empty,
-            System.Drawing.Color.Empty});
-            this.gunaDoughnutDataset1.Label = "Doughnut1";
-            // 
-            // gunaAreaDataset1
-            // 
-            this.gunaAreaDataset1.BorderColor = System.Drawing.Color.Empty;
-            this.gunaAreaDataset1.FillColor = System.Drawing.Color.Empty;
-            this.gunaAreaDataset1.Label = "Area1";
-            // 
-            // guna2GradientPanel1
-            // 
-            this.guna2GradientPanel1.Controls.Add(this.guna2Panel1);
-            this.guna2GradientPanel1.Controls.Add(this.btnUsers);
-            this.guna2GradientPanel1.Controls.Add(this.btnDashboard);
-            this.guna2GradientPanel1.Controls.Add(this.btnLogout);
-            this.guna2GradientPanel1.Controls.Add(this.btnLostItems);
-            this.guna2GradientPanel1.Controls.Add(this.btnClaims);
-            this.guna2GradientPanel1.Controls.Add(this.btnFoundItems);
-            this.guna2GradientPanel1.Controls.Add(this.btnLeaderboard);
-            this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(74)))), ((int)(((byte)(39)))));
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(74)))), ((int)(((byte)(39)))));
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(214, 701);
-            this.guna2GradientPanel1.TabIndex = 22;
-            this.guna2GradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel1_Paint);
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Panel1.BackgroundImage")));
-            this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2Panel1.Location = new System.Drawing.Point(12, 7);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(185, 206);
-            this.guna2Panel1.TabIndex = 25;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -422,6 +422,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "t";
             this.Load += new System.EventHandler(this.Dashboard_Load);
+            this.guna2GradientPanel1.ResumeLayout(false);
+            this.guna2GradientPanel1.PerformLayout();
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -431,8 +433,6 @@
             this.guna2GradientPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.guna2GradientPanel1.ResumeLayout(false);
-            this.guna2GradientPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
