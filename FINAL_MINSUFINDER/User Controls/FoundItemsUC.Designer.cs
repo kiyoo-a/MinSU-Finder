@@ -66,7 +66,7 @@
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddItem.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddItem.ForeColor = System.Drawing.Color.White;
-            this.btnAddItem.Location = new System.Drawing.Point(810, 18);
+            this.btnAddItem.Location = new System.Drawing.Point(803, 24);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(207, 38);
             this.btnAddItem.TabIndex = 29;
@@ -78,7 +78,7 @@
             // 
             this.flowLayoutPanel1.Location = new System.Drawing.Point(32, 203);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(978, 454);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(978, 479);
             this.flowLayoutPanel1.TabIndex = 30;
             // 
             // dataGridView1
