@@ -127,4 +127,10 @@
   <data name="Lost Items (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Lost Items (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Lost Items (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lost Items (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Lost Items (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lost Items (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
