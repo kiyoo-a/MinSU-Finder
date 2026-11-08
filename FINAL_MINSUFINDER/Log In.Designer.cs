@@ -82,7 +82,7 @@
             this.btnLogIn.BackColor = System.Drawing.Color.DarkGreen;
             this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogIn.ForeColor = System.Drawing.Color.Snow;
-            this.btnLogIn.Location = new System.Drawing.Point(831, 477);
+            this.btnLogIn.Location = new System.Drawing.Point(831, 450);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(256, 48);
             this.btnLogIn.TabIndex = 4;
@@ -105,9 +105,9 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(854, 528);
+            this.linkLabel1.Location = new System.Drawing.Point(863, 501);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(207, 16);
+            this.linkLabel1.Size = new System.Drawing.Size(190, 15);
             this.linkLabel1.TabIndex = 8;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Dont’t have an Account? Register.";
