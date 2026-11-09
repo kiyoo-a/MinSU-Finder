@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users));
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +52,7 @@
             // dgvUsers
             // 
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Location = new System.Drawing.Point(31, 111);
             this.dgvUsers.Name = "dgvUsers";
@@ -86,15 +87,24 @@
             this.guna2GradientPanel1.Size = new System.Drawing.Size(344, 702);
             this.guna2GradientPanel1.TabIndex = 33;
             // 
+            // txtUsername
+            // 
+            this.txtUsername.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Location = new System.Drawing.Point(33, 270);
+            this.txtUsername.Multiline = true;
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(285, 34);
+            this.txtUsername.TabIndex = 49;
+            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button3.Location = new System.Drawing.Point(165, 570);
+            this.button3.Location = new System.Drawing.Point(28, 598);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(137, 53);
+            this.button3.Size = new System.Drawing.Size(290, 53);
             this.button3.TabIndex = 48;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = false;
@@ -105,9 +115,9 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button2.Location = new System.Drawing.Point(22, 511);
+            this.button2.Location = new System.Drawing.Point(177, 539);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 53);
+            this.button2.Size = new System.Drawing.Size(141, 53);
             this.button2.TabIndex = 47;
             this.button2.Text = "Update";
             this.button2.UseVisualStyleBackColor = false;
@@ -118,9 +128,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button1.Location = new System.Drawing.Point(22, 570);
+            this.button1.Location = new System.Drawing.Point(28, 539);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 53);
+            this.button1.Size = new System.Drawing.Size(143, 53);
             this.button1.TabIndex = 46;
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = false;
@@ -234,15 +244,6 @@
             this.label1.Text = "Manage Users";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // txtUsername
-            // 
-            this.txtUsername.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(33, 270);
-            this.txtUsername.Multiline = true;
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(285, 34);
-            this.txtUsername.TabIndex = 49;
-            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -251,6 +252,7 @@
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.dgvUsers);
             this.Name = "Users";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Size = new System.Drawing.Size(1038, 702);
             this.Load += new System.EventHandler(this.Users_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();

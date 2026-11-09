@@ -1,5 +1,4 @@
-﻿using FINAL_MINSUFINDER.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FINAL_MINSUFINDER.Model;
+
 
 
 namespace FINAL_MINSUFINDER.User_Controls
@@ -27,36 +26,14 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            using (AddFoundItemForm addForm = new AddFoundItemForm())
-            {
-                if (addForm.ShowDialog() == DialogResult.OK)
-                {
-                    Item newItem = addForm.ResultItem;
 
-                  
-                    ItemCard card = new ItemCard(newItem);
+                
+            
+        }
 
-                  
-                    card.OnViewDetailsClicked += (s, ev) =>
-                    {
-                        MessageBox.Show($"Details:\nItem: {newItem.ItemName}\nLocation: {newItem.Location}\nDescription: {newItem.Description}",
-                                        "Item Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    };
+        private void FoundItemsUC_Load(object sender, EventArgs e)
+        {
 
-                    card.OnClaimClicked += (s, ev) =>
-                    {
-                        DialogResult result = MessageBox.Show($"Mark '{newItem.ItemName}' as claimed?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes)
-                        {
-                            flowLayoutPanel1.Controls.Remove(card);
-                            MessageBox.Show("Item successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    };
-
-                   
-                    flowLayoutPanel1.Controls.Add(card);
-                }
-            }
         }
     }
 }

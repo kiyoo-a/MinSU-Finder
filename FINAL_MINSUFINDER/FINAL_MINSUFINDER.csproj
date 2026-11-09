@@ -87,7 +87,6 @@
     <Compile Include="Log In.Designer.cs">
       <DependentUpon>Log In.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Item.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,18 +125,6 @@
     <Compile Include="User Controls\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddFoundItemForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\AddFoundItemForm.Designer.cs">
-      <DependentUpon>AddFoundItemForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ItemCard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\ItemCard.Designer.cs">
-      <DependentUpon>ItemCard.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,9 +158,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Controls\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\AddFoundItemForm.resx">
-      <DependentUpon>AddFoundItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
