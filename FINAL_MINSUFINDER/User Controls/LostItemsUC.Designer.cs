@@ -34,13 +34,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgridViewLostItems = new System.Windows.Forms.DataGridView();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLostDate = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtOwner = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtLostLocation = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtLostDescription = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgridViewLostItems)).BeginInit();
             this.guna2GradientPanel2.SuspendLayout();
@@ -106,14 +106,14 @@
             // guna2GradientPanel2
             // 
             this.guna2GradientPanel2.Controls.Add(this.label1);
-            this.guna2GradientPanel2.Controls.Add(this.textBox1);
-            this.guna2GradientPanel2.Controls.Add(this.comboBox1);
+            this.guna2GradientPanel2.Controls.Add(this.txtLostDate);
+            this.guna2GradientPanel2.Controls.Add(this.cmbStatus);
             this.guna2GradientPanel2.Controls.Add(this.button4);
             this.guna2GradientPanel2.Controls.Add(this.button5);
             this.guna2GradientPanel2.Controls.Add(this.button6);
-            this.guna2GradientPanel2.Controls.Add(this.textBox3);
+            this.guna2GradientPanel2.Controls.Add(this.txtOwner);
             this.guna2GradientPanel2.Controls.Add(this.label8);
-            this.guna2GradientPanel2.Controls.Add(this.textBox4);
+            this.guna2GradientPanel2.Controls.Add(this.txtLostLocation);
             this.guna2GradientPanel2.Controls.Add(this.label9);
             this.guna2GradientPanel2.Controls.Add(this.label10);
             this.guna2GradientPanel2.Controls.Add(this.txtLostDescription);
@@ -129,14 +129,14 @@
             this.guna2GradientPanel2.Size = new System.Drawing.Size(344, 702);
             this.guna2GradientPanel2.TabIndex = 35;
             // 
-            // textBox1
+            // txtLostDate
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(22, 293);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(299, 34);
-            this.textBox1.TabIndex = 49;
+            this.txtLostDate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLostDate.Location = new System.Drawing.Point(22, 293);
+            this.txtLostDate.Multiline = true;
+            this.txtLostDate.Name = "txtLostDate";
+            this.txtLostDate.Size = new System.Drawing.Size(299, 34);
+            this.txtLostDate.TabIndex = 49;
             // 
             // button4
             // 
@@ -177,14 +177,14 @@
             this.button6.Text = "Add Item";
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // textBox3
+            // txtOwner
             // 
-            this.textBox3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(22, 430);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(299, 34);
-            this.textBox3.TabIndex = 44;
+            this.txtOwner.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOwner.Location = new System.Drawing.Point(22, 430);
+            this.txtOwner.Multiline = true;
+            this.txtOwner.Name = "txtOwner";
+            this.txtOwner.Size = new System.Drawing.Size(299, 34);
+            this.txtOwner.TabIndex = 44;
             // 
             // label8
             // 
@@ -198,14 +198,14 @@
             this.label8.TabIndex = 43;
             this.label8.Text = "Owner";
             // 
-            // textBox4
+            // txtLostLocation
             // 
-            this.textBox4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(23, 361);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(298, 34);
-            this.textBox4.TabIndex = 42;
+            this.txtLostLocation.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLostLocation.Location = new System.Drawing.Point(23, 361);
+            this.txtLostLocation.Multiline = true;
+            this.txtLostLocation.Name = "txtLostLocation";
+            this.txtLostLocation.Size = new System.Drawing.Size(298, 34);
+            this.txtLostLocation.TabIndex = 42;
             // 
             // label9
             // 
@@ -269,9 +269,9 @@
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(18, 147);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(126, 24);
+            this.label12.Size = new System.Drawing.Size(129, 24);
             this.label12.TabIndex = 34;
-            this.label12.Text = "Item description";
+            this.label12.Text = "Item Description";
             // 
             // label13
             // 
@@ -297,18 +297,18 @@
             this.label1.TabIndex = 56;
             this.label1.Text = "Status";
             // 
-            // comboBox1
+            // cmbStatus
             // 
-            this.comboBox1.DisplayMember = "Category";
-            this.comboBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbStatus.DisplayMember = "Category";
+            this.cmbStatus.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
             "Claimes",
             "Unclaimed"});
-            this.comboBox1.Location = new System.Drawing.Point(22, 502);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(299, 32);
-            this.comboBox1.TabIndex = 55;
+            this.cmbStatus.Location = new System.Drawing.Point(22, 502);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(299, 32);
+            this.cmbStatus.TabIndex = 55;
             // 
             // LostItemsUC
             // 
@@ -339,13 +339,13 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgridViewLostItems;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLostDate;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtOwner;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtLostLocation;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtLostDescription;
@@ -354,6 +354,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbStatus;
     }
 }

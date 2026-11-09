@@ -24,8 +24,8 @@ namespace FINAL_MINSUFINDER.User_Controls
 
             using (SqlConnection con = db.GetConnection())
             {
-                string query = @"SELECT IdNumber, FullName, UserName, Course, Password
-                         FROM UsersAccount";
+                string query = @"SELECT UserID, IdNumber, FullName, UserName, Course, Password
+                 FROM UsersAccount";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
                 {
@@ -68,12 +68,82 @@ namespace FINAL_MINSUFINDER.User_Controls
                 DataGridViewRow row = dgvUsers.Rows[e.RowIndex];
 
                 // Palitan ang "idColumn" ng eksaktong Name property ng column sa iyong DataGridView Designer
+
                 txtID.Text = row.Cells["idNumber"].Value?.ToString();
 
                 txtFullName.Text = row.Cells["FullName"].Value?.ToString();
                 txtUsername.Text = row.Cells["UserName"].Value?.ToString();
                 txtCourse.Text = row.Cells["Course"].Value?.ToString();
                 txtPassword.Text = row.Cells["Password"].Value?.ToString();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            txtID.Clear();
+            txtFullName.Clear();
+            txtUsername.Clear();
+            txtCourse.Clear();
+            txtPassword.Clear();
+        }
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtID.Text))
+            {
+                MessageBox.Show("Please select a user to delete.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete this user?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    DatabaseConnection db = new DatabaseConnection();
+
+                    using (SqlConnection con = db.GetConnection())
+                    {
+                        con.Open();
+
+                        string query = "DELETE FROM UsersAccount WHERE IdNumber = @IdNumber";
+
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@IdNumber", txtID.Text.Trim());
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("User successfully deleted!");
+
+                                LoadUsers();
+
+                                txtID.Clear();
+                                txtFullName.Clear();
+                                txtUsername.Clear();
+                                txtCourse.Clear();
+                                txtPassword.Clear();
+                            }
+                            else
+                            {
+                                MessageBox.Show("User not found.");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting user: " + ex.Message);
+                }
             }
         }
     }
