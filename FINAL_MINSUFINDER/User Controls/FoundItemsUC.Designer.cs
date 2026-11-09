@@ -53,7 +53,7 @@
             this.comboBox2.DisplayMember = "Category";
             this.comboBox2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(844, 126);
+            this.comboBox2.Location = new System.Drawing.Point(430, 39);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(148, 32);
             this.comboBox2.TabIndex = 28;
@@ -97,11 +97,12 @@
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBox1.BackgroundImage = global::FINAL_MINSUFINDER.Properties.Resources.image_Photoroom__46_;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(810, 129);
+            this.pictureBox1.Location = new System.Drawing.Point(639, 130);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 28);
             this.pictureBox1.TabIndex = 33;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // textBox2
             // 
@@ -109,7 +110,7 @@
             this.textBox2.Location = new System.Drawing.Point(246, 126);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(592, 34);
+            this.textBox2.Size = new System.Drawing.Size(418, 34);
             this.textBox2.TabIndex = 32;
             // 
             // FoundItemsUC

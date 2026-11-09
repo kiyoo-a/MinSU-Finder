@@ -58,5 +58,10 @@ namespace FINAL_MINSUFINDER.User_Controls
                 }
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
