@@ -32,6 +32,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.txtFoundDate = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -50,8 +52,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.guna2GradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoundItems)).BeginInit();
@@ -103,6 +103,31 @@
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
             this.guna2GradientPanel2.Size = new System.Drawing.Size(344, 702);
             this.guna2GradientPanel2.TabIndex = 34;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(19, 475);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 24);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "Status";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.DisplayMember = "Category";
+            this.cmbStatus.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Claimed",
+            "Unclaimed"});
+            this.cmbStatus.Location = new System.Drawing.Point(22, 502);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(299, 32);
+            this.cmbStatus.TabIndex = 53;
             // 
             // txtFoundDate
             // 
@@ -308,31 +333,6 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(250, 34);
             this.textBox6.TabIndex = 50;
-            // 
-            // cmbStatus
-            // 
-            this.cmbStatus.DisplayMember = "Category";
-            this.cmbStatus.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "Claimed",
-            "Unclaimed"});
-            this.cmbStatus.Location = new System.Drawing.Point(22, 502);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(299, 32);
-            this.cmbStatus.TabIndex = 53;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(19, 475);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 24);
-            this.label1.TabIndex = 54;
-            this.label1.Text = "Status";
             // 
             // FoundItemsUC
             // 

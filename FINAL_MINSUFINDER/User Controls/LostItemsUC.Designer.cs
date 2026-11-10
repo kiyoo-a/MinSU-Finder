@@ -32,9 +32,11 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dgridViewLostItems = new System.Windows.Forms.DataGridView();
+            this.dgvLostItems = new System.Windows.Forms.DataGridView();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtLostDate = new System.Windows.Forms.TextBox();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -48,10 +50,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgridViewLostItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLostItems)).BeginInit();
             this.guna2GradientPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,16 +92,16 @@
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             // 
-            // dgridViewLostItems
+            // dgvLostItems
             // 
-            this.dgridViewLostItems.BackgroundColor = System.Drawing.Color.White;
-            this.dgridViewLostItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgridViewLostItems.Location = new System.Drawing.Point(33, 184);
-            this.dgridViewLostItems.Name = "dgridViewLostItems";
-            this.dgridViewLostItems.RowHeadersWidth = 51;
-            this.dgridViewLostItems.RowTemplate.Height = 24;
-            this.dgridViewLostItems.Size = new System.Drawing.Size(640, 483);
-            this.dgridViewLostItems.TabIndex = 32;
+            this.dgvLostItems.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLostItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLostItems.Location = new System.Drawing.Point(33, 184);
+            this.dgvLostItems.Name = "dgvLostItems";
+            this.dgvLostItems.RowHeadersWidth = 51;
+            this.dgvLostItems.RowTemplate.Height = 24;
+            this.dgvLostItems.Size = new System.Drawing.Size(640, 483);
+            this.dgvLostItems.TabIndex = 32;
             // 
             // guna2GradientPanel2
             // 
@@ -129,6 +129,18 @@
             this.guna2GradientPanel2.Size = new System.Drawing.Size(344, 702);
             this.guna2GradientPanel2.TabIndex = 35;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(19, 475);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 24);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Status";
+            // 
             // txtLostDate
             // 
             this.txtLostDate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -137,6 +149,19 @@
             this.txtLostDate.Name = "txtLostDate";
             this.txtLostDate.Size = new System.Drawing.Size(299, 34);
             this.txtLostDate.TabIndex = 49;
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.DisplayMember = "Category";
+            this.cmbStatus.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Claimes",
+            "Unclaimed"});
+            this.cmbStatus.Location = new System.Drawing.Point(22, 502);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(299, 32);
+            this.cmbStatus.TabIndex = 55;
             // 
             // button4
             // 
@@ -176,6 +201,7 @@
             this.button6.TabIndex = 46;
             this.button6.Text = "Add Item";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // txtOwner
             // 
@@ -285,31 +311,6 @@
             this.label13.TabIndex = 33;
             this.label13.Text = "Manage Lost Items";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(19, 475);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 24);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "Status";
-            // 
-            // cmbStatus
-            // 
-            this.cmbStatus.DisplayMember = "Category";
-            this.cmbStatus.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "Claimes",
-            "Unclaimed"});
-            this.cmbStatus.Location = new System.Drawing.Point(22, 502);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(299, 32);
-            this.cmbStatus.TabIndex = 55;
-            // 
             // LostItemsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -317,7 +318,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.guna2GradientPanel2);
-            this.Controls.Add(this.dgridViewLostItems);
+            this.Controls.Add(this.dgvLostItems);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.textBox2);
@@ -325,7 +326,7 @@
             this.Size = new System.Drawing.Size(1038, 702);
             this.Load += new System.EventHandler(this.LostItemsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgridViewLostItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLostItems)).EndInit();
             this.guna2GradientPanel2.ResumeLayout(false);
             this.guna2GradientPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -337,7 +338,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dgridViewLostItems;
+        private System.Windows.Forms.DataGridView dgvLostItems;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
         private System.Windows.Forms.TextBox txtLostDate;
         private System.Windows.Forms.Button button4;

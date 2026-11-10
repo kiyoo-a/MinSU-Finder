@@ -29,17 +29,14 @@
         private void InitializeComponent()
         {
             Guna.Charts.WinForms.GunaDoughnutDataset gunaDoughnutDataset2;
-            Guna.Charts.WinForms.LPoint lPoint8 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint9 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint10 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint11 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint12 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint13 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint14 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint1 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint2 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint3 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint4 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint5 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint6 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint7 = new Guna.Charts.WinForms.LPoint();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnLostItems = new System.Windows.Forms.Button();
             this.btnFoundItems = new System.Windows.Forms.Button();
@@ -52,7 +49,6 @@
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,7 +63,6 @@
             gunaDoughnutDataset2 = new Guna.Charts.WinForms.GunaDoughnutDataset();
             this.guna2GradientPanel1.SuspendLayout();
             this.pnlContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             this.guna2GradientPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -76,13 +71,13 @@
             // 
             // gunaDoughnutDataset2
             // 
-            lPoint8.Label = "2342";
-            lPoint8.Y = 0D;
-            lPoint9.Label = "324";
-            lPoint9.Y = 0D;
+            lPoint1.Label = "2342";
+            lPoint1.Y = 0D;
+            lPoint2.Label = "324";
+            lPoint2.Y = 0D;
             gunaDoughnutDataset2.DataPoints.AddRange(new Guna.Charts.WinForms.LPoint[] {
-            lPoint8,
-            lPoint9});
+            lPoint1,
+            lPoint2});
             gunaDoughnutDataset2.FillColors.AddRange(new System.Drawing.Color[] {
             System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255))))),
@@ -182,20 +177,20 @@
             System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(33)))))});
-            lPoint10.Y = 0D;
-            lPoint11.Label = "32";
-            lPoint11.Y = 0D;
-            lPoint12.Label = "323";
-            lPoint12.Y = 0D;
-            lPoint13.Label = "3425";
-            lPoint13.Y = 0D;
-            lPoint14.Y = 0D;
+            lPoint3.Y = 0D;
+            lPoint4.Label = "32";
+            lPoint4.Y = 0D;
+            lPoint5.Label = "323";
+            lPoint5.Y = 0D;
+            lPoint6.Label = "3425";
+            lPoint6.Y = 0D;
+            lPoint7.Y = 0D;
             this.gunaDoughnutDataset1.DataPoints.AddRange(new Guna.Charts.WinForms.LPoint[] {
-            lPoint10,
-            lPoint11,
-            lPoint12,
-            lPoint13,
-            lPoint14});
+            lPoint3,
+            lPoint4,
+            lPoint5,
+            lPoint6,
+            lPoint7});
             this.gunaDoughnutDataset1.FillColors.AddRange(new System.Drawing.Color[] {
             System.Drawing.Color.Empty,
             System.Drawing.Color.Empty,
@@ -247,7 +242,6 @@
             this.pnlContent.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlContent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlContent.BackgroundImage")));
             this.pnlContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlContent.Controls.Add(this.chart1);
             this.pnlContent.Controls.Add(this.guna2Panel2);
             this.pnlContent.Controls.Add(this.lblClaims);
             this.pnlContent.Controls.Add(this.label5);
@@ -258,32 +252,6 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1038, 702);
             this.pnlContent.TabIndex = 6;
-            // 
-            // chart1
-            // 
-            this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(620, 473);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            this.chart1.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(224)))), ((int)(((byte)(156))))),
-        System.Drawing.Color.Empty,
-        System.Drawing.Color.Empty,
-        System.Drawing.Color.Empty};
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Legend = "Legend1";
-            series2.LegendText = "Found Items";
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(364, 182);
-            this.chart1.TabIndex = 26;
-            this.chart1.Text = "chart1";
             // 
             // guna2Panel2
             // 
@@ -426,7 +394,6 @@
             this.guna2GradientPanel1.PerformLayout();
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.guna2GradientPanel6.ResumeLayout(false);
@@ -461,7 +428,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label12;
     }
 }

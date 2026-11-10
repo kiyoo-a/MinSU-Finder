@@ -10,7 +10,9 @@ namespace FINAL_MINSUFINDER
     public class DatabaseConnection
     {
         private string connectionString =
-            "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\cj\\OneDrive\\Desktop\\Final Project (OOP)\\FINAL_MINSUFINDER\\FINAL_MINSUFINDER\\Database1.mdf\";Integrated Security=True";
+     @"Data Source=(LocalDB)\MSSQLLocalDB;
+    AttachDbFilename=C:\Users\cj\OneDrive\Documents\DIRECTORY_minsufinder\MinSU-Finder\FINAL_MINSUFINDER\Database1.mdf;
+    Integrated Security=True";
 
         public SqlConnection GetConnection()
         {

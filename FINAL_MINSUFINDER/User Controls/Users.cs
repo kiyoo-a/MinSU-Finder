@@ -24,18 +24,19 @@ namespace FINAL_MINSUFINDER.User_Controls
 
             using (SqlConnection con = db.GetConnection())
             {
-                string query = @"SELECT UserID, IdNumber, FullName, UserName, Course, Password
-                 FROM UsersAccount";
+                con.Open();
+
+                string query = "SELECT * FROM UsersAccount";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
                 {
                     DataTable dt = new DataTable();
-
                     adapter.Fill(dt);
 
                     dgvUsers.DataSource = dt;
                 }
             }
+
         }
 
         private void Users_Load(object sender, EventArgs e)
@@ -143,6 +144,51 @@ namespace FINAL_MINSUFINDER.User_Controls
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error deleting user: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtID.Text))
+            {
+                MessageBox.Show("Please select a user first.");
+                return;
+            }
+
+            DatabaseConnection db = new DatabaseConnection();
+
+            using (SqlConnection con = db.GetConnection())
+            {
+                con.Open();
+
+                string query = @"UPDATE UsersAccount
+                         SET FullName = @FullName,
+                             UserName = @UserName,
+                             Course = @Course,
+                             Password = @Password
+                         WHERE IdNumber = @IdNumber";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@IdNumber", txtID.Text);
+                    cmd.Parameters.AddWithValue("@FullName", txtFullName.Text);
+                    cmd.Parameters.AddWithValue("@UserName", txtUsername.Text);
+                    cmd.Parameters.AddWithValue("@Course", txtCourse.Text);
+                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+
+                    int result = cmd.ExecuteNonQuery();
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show("User updated successfully!");
+
+                        LoadUsers();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No user was updated.");
+                    }
                 }
             }
         }
