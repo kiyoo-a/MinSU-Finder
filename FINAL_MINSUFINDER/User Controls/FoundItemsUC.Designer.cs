@@ -348,7 +348,6 @@
             this.Controls.Add(this.label4);
             this.Name = "FoundItemsUC";
             this.Size = new System.Drawing.Size(1038, 702);
-            this.Load += new System.EventHandler(this.FoundItemsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.guna2GradientPanel2.ResumeLayout(false);
             this.guna2GradientPanel2.PerformLayout();
