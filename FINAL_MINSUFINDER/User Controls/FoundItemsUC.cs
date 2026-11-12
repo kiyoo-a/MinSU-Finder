@@ -40,9 +40,29 @@ namespace FINAL_MINSUFINDER.User_Controls
                     dgvFoundItems.DataSource = dt;
                 }
             }
-        }   
+        }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+
+                
+            
+        }
+
+        private void FoundItemsUC_Load(object sender, EventArgs e)
+        {
+            LoadFoundItems();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
