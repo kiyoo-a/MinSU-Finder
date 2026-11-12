@@ -34,11 +34,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvLostItems = new System.Windows.Forms.DataGridView();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.btnFound = new System.Windows.Forms.Button();
+            this.dtpLostDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtLostDate = new System.Windows.Forms.TextBox();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.txtOwner = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -94,22 +95,31 @@
             // 
             // dgvLostItems
             // 
+            this.dgvLostItems.AllowUserToAddRows = false;
+            this.dgvLostItems.AllowUserToDeleteRows = false;
+            this.dgvLostItems.AllowUserToResizeColumns = false;
+            this.dgvLostItems.AllowUserToResizeRows = false;
+            this.dgvLostItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLostItems.BackgroundColor = System.Drawing.Color.White;
             this.dgvLostItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLostItems.Location = new System.Drawing.Point(33, 184);
             this.dgvLostItems.Name = "dgvLostItems";
+            this.dgvLostItems.RowHeadersVisible = false;
             this.dgvLostItems.RowHeadersWidth = 51;
             this.dgvLostItems.RowTemplate.Height = 24;
             this.dgvLostItems.Size = new System.Drawing.Size(640, 483);
             this.dgvLostItems.TabIndex = 32;
+            this.dgvLostItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLostItems_CellClick_1);
+            this.dgvLostItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLostItems_CellContentClick);
             // 
             // guna2GradientPanel2
             // 
+            this.guna2GradientPanel2.Controls.Add(this.btnFound);
+            this.guna2GradientPanel2.Controls.Add(this.dtpLostDate);
             this.guna2GradientPanel2.Controls.Add(this.label1);
-            this.guna2GradientPanel2.Controls.Add(this.txtLostDate);
             this.guna2GradientPanel2.Controls.Add(this.cmbStatus);
-            this.guna2GradientPanel2.Controls.Add(this.button4);
-            this.guna2GradientPanel2.Controls.Add(this.button5);
+            this.guna2GradientPanel2.Controls.Add(this.btnDelete);
+            this.guna2GradientPanel2.Controls.Add(this.btnUpdate);
             this.guna2GradientPanel2.Controls.Add(this.button6);
             this.guna2GradientPanel2.Controls.Add(this.txtOwner);
             this.guna2GradientPanel2.Controls.Add(this.label8);
@@ -129,6 +139,29 @@
             this.guna2GradientPanel2.Size = new System.Drawing.Size(344, 702);
             this.guna2GradientPanel2.TabIndex = 35;
             // 
+            // btnFound
+            // 
+            this.btnFound.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnFound.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFound.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFound.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnFound.Location = new System.Drawing.Point(31, 630);
+            this.btnFound.Name = "btnFound";
+            this.btnFound.Size = new System.Drawing.Size(143, 53);
+            this.btnFound.TabIndex = 59;
+            this.btnFound.Text = "Found";
+            this.btnFound.UseVisualStyleBackColor = false;
+            this.btnFound.Click += new System.EventHandler(this.btnClear_Click_1);
+            // 
+            // dtpLostDate
+            // 
+            this.dtpLostDate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpLostDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpLostDate.Location = new System.Drawing.Point(22, 293);
+            this.dtpLostDate.Name = "dtpLostDate";
+            this.dtpLostDate.Size = new System.Drawing.Size(299, 30);
+            this.dtpLostDate.TabIndex = 58;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -141,53 +174,46 @@
             this.label1.TabIndex = 56;
             this.label1.Text = "Status";
             // 
-            // txtLostDate
-            // 
-            this.txtLostDate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLostDate.Location = new System.Drawing.Point(22, 293);
-            this.txtLostDate.Multiline = true;
-            this.txtLostDate.Name = "txtLostDate";
-            this.txtLostDate.Size = new System.Drawing.Size(299, 34);
-            this.txtLostDate.TabIndex = 49;
-            // 
             // cmbStatus
             // 
             this.cmbStatus.DisplayMember = "Category";
             this.cmbStatus.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
-            "Claimes",
-            "Unclaimed"});
+            "Lost",
+            "Found"});
             this.cmbStatus.Location = new System.Drawing.Point(22, 502);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(299, 32);
             this.cmbStatus.TabIndex = 55;
             // 
-            // button4
+            // btnDelete
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button4.Location = new System.Drawing.Point(31, 630);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(290, 53);
-            this.button4.TabIndex = 48;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnDelete.Location = new System.Drawing.Point(180, 630);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(141, 53);
+            this.btnDelete.TabIndex = 48;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
-            // button5
+            // btnUpdate
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button5.Location = new System.Drawing.Point(180, 571);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(141, 53);
-            this.button5.TabIndex = 47;
-            this.button5.Text = "Claim";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnUpdate.Location = new System.Drawing.Point(180, 571);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(141, 53);
+            this.btnUpdate.TabIndex = 47;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
             // 
             // button6
             // 
@@ -260,7 +286,7 @@
             // txtLostDescription
             // 
             this.txtLostDescription.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLostDescription.Location = new System.Drawing.Point(22, 168);
+            this.txtLostDescription.Location = new System.Drawing.Point(22, 170);
             this.txtLostDescription.Multiline = true;
             this.txtLostDescription.Name = "txtLostDescription";
             this.txtLostDescription.Size = new System.Drawing.Size(299, 89);
@@ -340,9 +366,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgvLostItems;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
-        private System.Windows.Forms.TextBox txtLostDate;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox txtOwner;
         private System.Windows.Forms.Label label8;
@@ -356,5 +381,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.DateTimePicker dtpLostDate;
+        private System.Windows.Forms.Button btnFound;
     }
 }

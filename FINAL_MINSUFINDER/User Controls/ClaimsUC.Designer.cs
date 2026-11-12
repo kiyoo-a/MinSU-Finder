@@ -32,7 +32,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dgvClaims = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClaims)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -66,18 +68,39 @@
             this.textBox2.Size = new System.Drawing.Size(578, 34);
             this.textBox2.TabIndex = 32;
             // 
+            // dgvClaims
+            // 
+            this.dgvClaims.AllowUserToAddRows = false;
+            this.dgvClaims.AllowUserToDeleteRows = false;
+            this.dgvClaims.AllowUserToResizeColumns = false;
+            this.dgvClaims.AllowUserToResizeRows = false;
+            this.dgvClaims.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvClaims.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvClaims.BackgroundColor = System.Drawing.Color.White;
+            this.dgvClaims.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClaims.Location = new System.Drawing.Point(32, 176);
+            this.dgvClaims.Name = "dgvClaims";
+            this.dgvClaims.RowHeadersVisible = false;
+            this.dgvClaims.RowHeadersWidth = 51;
+            this.dgvClaims.RowTemplate.Height = 24;
+            this.dgvClaims.Size = new System.Drawing.Size(979, 443);
+            this.dgvClaims.TabIndex = 35;
+            // 
             // ClaimsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.dgvClaims);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.textBox2);
             this.Name = "ClaimsUC";
             this.Size = new System.Drawing.Size(1038, 702);
+            this.Load += new System.EventHandler(this.ClaimsUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClaims)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,5 +111,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridView dgvClaims;
     }
 }

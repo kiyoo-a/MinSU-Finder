@@ -51,11 +51,16 @@
             // 
             // dgvUsers
             // 
+            this.dgvUsers.AllowUserToAddRows = false;
+            this.dgvUsers.AllowUserToDeleteRows = false;
+            this.dgvUsers.AllowUserToResizeColumns = false;
+            this.dgvUsers.AllowUserToResizeRows = false;
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Location = new System.Drawing.Point(31, 111);
             this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.RowHeadersVisible = false;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
             this.dgvUsers.Size = new System.Drawing.Size(640, 554);

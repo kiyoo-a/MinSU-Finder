@@ -37,6 +37,7 @@
             Guna.Charts.WinForms.LPoint lPoint6 = new Guna.Charts.WinForms.LPoint();
             Guna.Charts.WinForms.LPoint lPoint7 = new Guna.Charts.WinForms.LPoint();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnLostItems = new System.Windows.Forms.Button();
             this.btnFoundItems = new System.Windows.Forms.Button();
@@ -49,24 +50,15 @@
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.guna2GradientPanel6 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.lblClaims = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblMissingItems = new System.Windows.Forms.Label();
-            this.lblFounItems = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblClaimCount = new System.Windows.Forms.Label();
+            this.lblUserCount = new System.Windows.Forms.Label();
+            this.lblLostCount = new System.Windows.Forms.Label();
+            this.lblFoundCount = new System.Windows.Forms.Label();
+            this.dgvRecentActivities = new System.Windows.Forms.DataGridView();
             gunaDoughnutDataset2 = new Guna.Charts.WinForms.GunaDoughnutDataset();
             this.guna2GradientPanel1.SuspendLayout();
             this.pnlContent.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
-            this.guna2GradientPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecentActivities)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaDoughnutDataset2
@@ -242,139 +234,89 @@
             this.pnlContent.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlContent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlContent.BackgroundImage")));
             this.pnlContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlContent.Controls.Add(this.guna2Panel2);
-            this.pnlContent.Controls.Add(this.lblClaims);
-            this.pnlContent.Controls.Add(this.label5);
-            this.pnlContent.Controls.Add(this.lblMissingItems);
-            this.pnlContent.Controls.Add(this.lblFounItems);
-            this.pnlContent.Controls.Add(this.dataGridView1);
+            this.pnlContent.Controls.Add(this.lblClaimCount);
+            this.pnlContent.Controls.Add(this.lblUserCount);
+            this.pnlContent.Controls.Add(this.lblLostCount);
+            this.pnlContent.Controls.Add(this.lblFoundCount);
+            this.pnlContent.Controls.Add(this.dgvRecentActivities);
             this.pnlContent.Location = new System.Drawing.Point(217, 0);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1038, 702);
             this.pnlContent.TabIndex = 6;
+            this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
-            // guna2Panel2
+            // lblClaimCount
             // 
-            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel2.Controls.Add(this.label12);
-            this.guna2Panel2.Controls.Add(this.label6);
-            this.guna2Panel2.Controls.Add(this.guna2GradientPanel6);
-            this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.guna2Panel2.Location = new System.Drawing.Point(617, 260);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(377, 146);
-            this.guna2Panel2.TabIndex = 25;
+            this.lblClaimCount.AutoSize = true;
+            this.lblClaimCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblClaimCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaimCount.Location = new System.Drawing.Point(622, 167);
+            this.lblClaimCount.Name = "lblClaimCount";
+            this.lblClaimCount.Size = new System.Drawing.Size(96, 46);
+            this.lblClaimCount.TabIndex = 6;
+            this.lblClaimCount.Text = "(678)";
             // 
-            // label12
+            // lblUserCount
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Tai Le", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(53, 65);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(231, 29);
-            this.label12.TabIndex = 29;
-            this.label12.Text = "Carl Jeferson Colina ";
+            this.lblUserCount.AutoSize = true;
+            this.lblUserCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblUserCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserCount.Location = new System.Drawing.Point(860, 167);
+            this.lblUserCount.Name = "lblUserCount";
+            this.lblUserCount.Size = new System.Drawing.Size(96, 46);
+            this.lblUserCount.TabIndex = 6;
+            this.lblUserCount.Text = "(678)";
             // 
-            // label6
+            // lblLostCount
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(54, 96);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(127, 22);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "System Admin";
+            this.lblLostCount.AutoSize = true;
+            this.lblLostCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblLostCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLostCount.Location = new System.Drawing.Point(391, 167);
+            this.lblLostCount.Name = "lblLostCount";
+            this.lblLostCount.Size = new System.Drawing.Size(96, 46);
+            this.lblLostCount.TabIndex = 7;
+            this.lblLostCount.Text = "(345)";
             // 
-            // guna2GradientPanel6
+            // lblFoundCount
             // 
-            this.guna2GradientPanel6.Controls.Add(this.label9);
-            this.guna2GradientPanel6.Controls.Add(this.pictureBox5);
-            this.guna2GradientPanel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2GradientPanel6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.guna2GradientPanel6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(74)))), ((int)(((byte)(39)))));
-            this.guna2GradientPanel6.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel6.Name = "guna2GradientPanel6";
-            this.guna2GradientPanel6.Size = new System.Drawing.Size(377, 53);
-            this.guna2GradientPanel6.TabIndex = 30;
+            this.lblFoundCount.AutoSize = true;
+            this.lblFoundCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblFoundCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFoundCount.Location = new System.Drawing.Point(147, 167);
+            this.lblFoundCount.Name = "lblFoundCount";
+            this.lblFoundCount.Size = new System.Drawing.Size(96, 46);
+            this.lblFoundCount.TabIndex = 8;
+            this.lblFoundCount.Text = "(012)";
             // 
-            // label9
+            // dgvRecentActivities
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(54, 17);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(163, 23);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "WELCOME BACK! ";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(56, 49);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 28;
-            this.pictureBox5.TabStop = false;
-            // 
-            // lblClaims
-            // 
-            this.lblClaims.AutoSize = true;
-            this.lblClaims.BackColor = System.Drawing.Color.Transparent;
-            this.lblClaims.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaims.Location = new System.Drawing.Point(622, 167);
-            this.lblClaims.Name = "lblClaims";
-            this.lblClaims.Size = new System.Drawing.Size(96, 46);
-            this.lblClaims.TabIndex = 6;
-            this.lblClaims.Text = "(678)";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(860, 167);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 46);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "(678)";
-            // 
-            // lblMissingItems
-            // 
-            this.lblMissingItems.AutoSize = true;
-            this.lblMissingItems.BackColor = System.Drawing.Color.Transparent;
-            this.lblMissingItems.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMissingItems.Location = new System.Drawing.Point(391, 167);
-            this.lblMissingItems.Name = "lblMissingItems";
-            this.lblMissingItems.Size = new System.Drawing.Size(96, 46);
-            this.lblMissingItems.TabIndex = 7;
-            this.lblMissingItems.Text = "(345)";
-            // 
-            // lblFounItems
-            // 
-            this.lblFounItems.AutoSize = true;
-            this.lblFounItems.BackColor = System.Drawing.Color.Transparent;
-            this.lblFounItems.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFounItems.Location = new System.Drawing.Point(147, 167);
-            this.lblFounItems.Name = "lblFounItems";
-            this.lblFounItems.Size = new System.Drawing.Size(96, 46);
-            this.lblFounItems.TabIndex = 8;
-            this.lblFounItems.Text = "(012)";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(52, 260);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(535, 371);
-            this.dataGridView1.TabIndex = 20;
+            this.dgvRecentActivities.AllowUserToAddRows = false;
+            this.dgvRecentActivities.AllowUserToDeleteRows = false;
+            this.dgvRecentActivities.AllowUserToOrderColumns = true;
+            this.dgvRecentActivities.AllowUserToResizeColumns = false;
+            this.dgvRecentActivities.AllowUserToResizeRows = false;
+            this.dgvRecentActivities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRecentActivities.BackgroundColor = System.Drawing.Color.White;
+            this.dgvRecentActivities.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dgvRecentActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRecentActivities.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvRecentActivities.GridColor = System.Drawing.Color.White;
+            this.dgvRecentActivities.Location = new System.Drawing.Point(47, 253);
+            this.dgvRecentActivities.Name = "dgvRecentActivities";
+            this.dgvRecentActivities.RowHeadersVisible = false;
+            this.dgvRecentActivities.RowHeadersWidth = 51;
+            this.dgvRecentActivities.RowTemplate.Height = 24;
+            this.dgvRecentActivities.Size = new System.Drawing.Size(943, 413);
+            this.dgvRecentActivities.TabIndex = 20;
+            this.dgvRecentActivities.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Dashboard
             // 
@@ -394,12 +336,7 @@
             this.guna2GradientPanel1.PerformLayout();
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
-            this.guna2GradientPanel6.ResumeLayout(false);
-            this.guna2GradientPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecentActivities)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -412,22 +349,16 @@
         private System.Windows.Forms.Button btnLeaderboard;
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.Button btnClaims;
-        private System.Windows.Forms.Label lblMissingItems;
-        private System.Windows.Forms.Label lblFounItems;
-        private System.Windows.Forms.Label lblClaims;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblLostCount;
+        private System.Windows.Forms.Label lblFoundCount;
+        private System.Windows.Forms.Label lblClaimCount;
+        private System.Windows.Forms.Label lblUserCount;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnUsers;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvRecentActivities;
         private Guna.Charts.WinForms.GunaDoughnutDataset gunaDoughnutDataset1;
         private Guna.Charts.WinForms.GunaAreaDataset gunaAreaDataset1;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel6;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label12;
     }
 }

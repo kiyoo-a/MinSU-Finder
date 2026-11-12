@@ -3,11 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+
 
 namespace FINAL_MINSUFINDER
 {
@@ -46,10 +49,46 @@ namespace FINAL_MINSUFINDER
         }
 
 
+        private void LoadDashboardCounts()
+        {
+            try
+            {
+                DatabaseConnection db = new DatabaseConnection();
 
+                using (SqlConnection con = db.GetConnection())
+                {
+                    con.Open();
+
+                    string query = @"
+                SELECT
+                    (SELECT COUNT(*) FROM FoundItems) AS FoundCount,
+                    (SELECT COUNT(*) FROM LostItems WHERE Status = 'Lost') AS LostCount,
+                    (SELECT COUNT(*) FROM Claims) AS ClaimCount,
+                    (SELECT COUNT(*) FROM UsersAccount) AS UserCount";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            lblFoundCount.Text = reader["FoundCount"].ToString();
+                            lblLostCount.Text = reader["LostCount"].ToString();
+                            lblClaimCount.Text = reader["ClaimCount"].ToString();
+                            lblUserCount.Text = reader["UserCount"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading dashboard counts: " + ex.Message);
+            }
+        }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            LoadDashboardCounts();
+            LoadRecentActivities();
 
         }
 
@@ -103,12 +142,90 @@ namespace FINAL_MINSUFINDER
             LoadUserControl(new Users());
         }
 
+        private void LoadRecentActivities()
+        {
+            
+    try
+    {
+        DatabaseConnection db = new DatabaseConnection();
+
+        using (SqlConnection con = db.GetConnection())
+        {
+            con.Open();
+
+            string query = @"
+                SELECT TOP 20 *
+                FROM
+                (
+                    SELECT
+                        'Registration' AS ActivityType,
+                        'New student registered' AS Description,
+                        FullName AS ActivityUser,
+                        DateRegistered AS ActivityDate
+                    FROM UsersAccount
+
+                    UNION ALL
+
+                    SELECT
+                        'Lost Item',
+                        CONCAT('Reported a lost item: ', ItemName),
+                        ItemOwner,
+                        DateLost
+                    FROM LostItems
+
+                    UNION ALL
+
+                    SELECT
+                        'Found Item',
+                        CONCAT('Reported a found item: ', ItemName),
+                        Founder,
+                        DateFound
+                    FROM FoundItems
+
+                    UNION ALL
+
+                    SELECT
+                        'Claim',
+                        CONCAT('Claimed an item: ', ItemName),
+                        ClaimantFullName,
+                        DateClaimed
+                    FROM Claims
+
+                ) AS Activities
+
+                ORDER BY ActivityDate DESC";
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dgvRecentActivities.DataSource = dt;
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Error loading recent activities: " + ex.Message);
+    }
+        }
+
         private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pnlContent_Paint(object sender, PaintEventArgs e)
         {
 
         }

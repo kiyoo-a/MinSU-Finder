@@ -32,9 +32,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.dtpFoundDate = new System.Windows.Forms.DateTimePicker();
+            this.btnCLaim = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.txtFoundDate = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -80,9 +81,10 @@
             // 
             // guna2GradientPanel2
             // 
+            this.guna2GradientPanel2.Controls.Add(this.dtpFoundDate);
+            this.guna2GradientPanel2.Controls.Add(this.btnCLaim);
             this.guna2GradientPanel2.Controls.Add(this.label1);
             this.guna2GradientPanel2.Controls.Add(this.cmbStatus);
-            this.guna2GradientPanel2.Controls.Add(this.txtFoundDate);
             this.guna2GradientPanel2.Controls.Add(this.btnDelete);
             this.guna2GradientPanel2.Controls.Add(this.btnUpdate);
             this.guna2GradientPanel2.Controls.Add(this.btnAdd);
@@ -103,6 +105,30 @@
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
             this.guna2GradientPanel2.Size = new System.Drawing.Size(344, 702);
             this.guna2GradientPanel2.TabIndex = 34;
+            // 
+            // dtpFoundDate
+            // 
+            this.dtpFoundDate.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.dtpFoundDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFoundDate.Location = new System.Drawing.Point(22, 293);
+            this.dtpFoundDate.Name = "dtpFoundDate";
+            this.dtpFoundDate.Size = new System.Drawing.Size(299, 30);
+            this.dtpFoundDate.TabIndex = 56;
+            this.dtpFoundDate.Value = new System.DateTime(2026, 11, 12, 22, 52, 53, 0);
+            // 
+            // btnCLaim
+            // 
+            this.btnCLaim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnCLaim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCLaim.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCLaim.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnCLaim.Location = new System.Drawing.Point(31, 630);
+            this.btnCLaim.Name = "btnCLaim";
+            this.btnCLaim.Size = new System.Drawing.Size(143, 53);
+            this.btnCLaim.TabIndex = 55;
+            this.btnCLaim.Text = "Claim";
+            this.btnCLaim.UseVisualStyleBackColor = false;
+            this.btnCLaim.Click += new System.EventHandler(this.btnCLaim_Click);
             // 
             // label1
             // 
@@ -129,31 +155,23 @@
             this.cmbStatus.Size = new System.Drawing.Size(299, 32);
             this.cmbStatus.TabIndex = 53;
             // 
-            // txtFoundDate
-            // 
-            this.txtFoundDate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFoundDate.Location = new System.Drawing.Point(22, 293);
-            this.txtFoundDate.Multiline = true;
-            this.txtFoundDate.Name = "txtFoundDate";
-            this.txtFoundDate.Size = new System.Drawing.Size(299, 34);
-            this.txtFoundDate.TabIndex = 49;
-            // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnDelete.Location = new System.Drawing.Point(31, 630);
+            this.btnDelete.Location = new System.Drawing.Point(180, 630);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(290, 53);
+            this.btnDelete.Size = new System.Drawing.Size(141, 53);
             this.btnDelete.TabIndex = 48;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -161,8 +179,9 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(141, 53);
             this.btnUpdate.TabIndex = 47;
-            this.btnUpdate.Text = "Claim";
+            this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -288,14 +307,21 @@
             // 
             // dgvFoundItems
             // 
+            this.dgvFoundItems.AllowUserToAddRows = false;
+            this.dgvFoundItems.AllowUserToDeleteRows = false;
+            this.dgvFoundItems.AllowUserToResizeColumns = false;
+            this.dgvFoundItems.AllowUserToResizeRows = false;
+            this.dgvFoundItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFoundItems.BackgroundColor = System.Drawing.Color.White;
             this.dgvFoundItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFoundItems.Location = new System.Drawing.Point(33, 184);
             this.dgvFoundItems.Name = "dgvFoundItems";
+            this.dgvFoundItems.RowHeadersVisible = false;
             this.dgvFoundItems.RowHeadersWidth = 51;
             this.dgvFoundItems.RowTemplate.Height = 24;
             this.dgvFoundItems.Size = new System.Drawing.Size(640, 483);
             this.dgvFoundItems.TabIndex = 35;
+            this.dgvFoundItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFoundItems_CellClick);
             // 
             // pictureBox1
             // 
@@ -365,7 +391,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
-        private System.Windows.Forms.TextBox txtFoundDate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
@@ -385,5 +410,7 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCLaim;
+        private System.Windows.Forms.DateTimePicker dtpFoundDate;
     }
 }
