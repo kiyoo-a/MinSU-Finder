@@ -28,49 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.dgvLeaderboard = new System.Windows.Forms.DataGridView();
+            this.lblTop = new System.Windows.Forms.Label();
+            this.lblTopFound = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLeaderboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvLeaderboard
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 194);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(649, 454);
-            this.dataGridView1.TabIndex = 22;
+            this.dgvLeaderboard.AllowUserToAddRows = false;
+            this.dgvLeaderboard.AllowUserToDeleteRows = false;
+            this.dgvLeaderboard.AllowUserToOrderColumns = true;
+            this.dgvLeaderboard.AllowUserToResizeColumns = false;
+            this.dgvLeaderboard.AllowUserToResizeRows = false;
+            this.dgvLeaderboard.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLeaderboard.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLeaderboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLeaderboard.Location = new System.Drawing.Point(33, 194);
+            this.dgvLeaderboard.Name = "dgvLeaderboard";
+            this.dgvLeaderboard.ReadOnly = true;
+            this.dgvLeaderboard.RowHeadersVisible = false;
+            this.dgvLeaderboard.RowHeadersWidth = 51;
+            this.dgvLeaderboard.RowTemplate.Height = 24;
+            this.dgvLeaderboard.Size = new System.Drawing.Size(649, 454);
+            this.dgvLeaderboard.TabIndex = 22;
             // 
-            // label1
+            // lblTop
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(783, 498);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 27);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Juan Dela Cruz";
+            this.lblTop.AutoSize = true;
+            this.lblTop.BackColor = System.Drawing.Color.Transparent;
+            this.lblTop.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTop.Location = new System.Drawing.Point(783, 498);
+            this.lblTop.Name = "lblTop";
+            this.lblTop.Size = new System.Drawing.Size(138, 27);
+            this.lblTop.TabIndex = 23;
+            this.lblTop.Text = "Juan Dela Cruz";
             // 
-            // label2
+            // lblTopFound
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(764, 542);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 33);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "12 Found Items";
+            this.lblTopFound.AutoSize = true;
+            this.lblTopFound.BackColor = System.Drawing.Color.Transparent;
+            this.lblTopFound.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTopFound.ForeColor = System.Drawing.Color.White;
+            this.lblTopFound.Location = new System.Drawing.Point(764, 542);
+            this.lblTopFound.Name = "lblTopFound";
+            this.lblTopFound.Size = new System.Drawing.Size(175, 33);
+            this.lblTopFound.TabIndex = 24;
+            this.lblTopFound.Text = "12 Found Items";
             // 
             // pictureBox1
             // 
@@ -117,13 +125,13 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblTopFound);
+            this.Controls.Add(this.lblTop);
+            this.Controls.Add(this.dgvLeaderboard);
             this.Name = "LeaderboardUC";
             this.Size = new System.Drawing.Size(1038, 702);
             this.Load += new System.EventHandler(this.Leaderboard_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLeaderboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,9 +139,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgvLeaderboard;
+        private System.Windows.Forms.Label lblTop;
+        private System.Windows.Forms.Label lblTopFound;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.TextBox textBox2;

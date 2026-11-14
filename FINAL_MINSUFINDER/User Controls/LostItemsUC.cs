@@ -43,7 +43,6 @@ namespace FINAL_MINSUFINDER.User_Controls
 
                         dgvLostItems.DataSource = dt;
 
-                        // Hide the ID column
                         if (dgvLostItems.Columns["LostItemID"] != null)
                         {
                             dgvLostItems.Columns["LostItemID"].Visible = false;
@@ -57,13 +56,11 @@ namespace FINAL_MINSUFINDER.User_Controls
             }
         }
 
-        // FORM LOAD
         private void LostItemsUC_Load(object sender, EventArgs e)
         {
             LoadLostItems();
         }
 
-        // ADD LOST ITEM
         private void button6_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtLostName.Text) ||

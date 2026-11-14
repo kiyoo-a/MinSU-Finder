@@ -55,6 +55,8 @@
             this.lblLostCount = new System.Windows.Forms.Label();
             this.lblFoundCount = new System.Windows.Forms.Label();
             this.dgvRecentActivities = new System.Windows.Forms.DataGridView();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             gunaDoughnutDataset2 = new Guna.Charts.WinForms.GunaDoughnutDataset();
             this.guna2GradientPanel1.SuspendLayout();
             this.pnlContent.SuspendLayout();
@@ -234,6 +236,8 @@
             this.pnlContent.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlContent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlContent.BackgroundImage")));
             this.pnlContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlContent.Controls.Add(this.label13);
+            this.pnlContent.Controls.Add(this.btnReload);
             this.pnlContent.Controls.Add(this.lblClaimCount);
             this.pnlContent.Controls.Add(this.lblUserCount);
             this.pnlContent.Controls.Add(this.lblLostCount);
@@ -309,14 +313,40 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvRecentActivities.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRecentActivities.GridColor = System.Drawing.Color.White;
-            this.dgvRecentActivities.Location = new System.Drawing.Point(47, 253);
+            this.dgvRecentActivities.Location = new System.Drawing.Point(50, 311);
             this.dgvRecentActivities.Name = "dgvRecentActivities";
             this.dgvRecentActivities.RowHeadersVisible = false;
             this.dgvRecentActivities.RowHeadersWidth = 51;
             this.dgvRecentActivities.RowTemplate.Height = 24;
-            this.dgvRecentActivities.Size = new System.Drawing.Size(943, 413);
+            this.dgvRecentActivities.Size = new System.Drawing.Size(942, 378);
             this.dgvRecentActivities.TabIndex = 20;
             this.dgvRecentActivities.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // btnReload
+            // 
+            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReload.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnReload.Location = new System.Drawing.Point(797, 275);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(195, 31);
+            this.btnReload.TabIndex = 49;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial Narrow", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label13.Location = new System.Drawing.Point(28, 265);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(253, 43);
+            this.label13.TabIndex = 50;
+            this.label13.Text = "Recent Acivities";
             // 
             // Dashboard
             // 
@@ -360,5 +390,7 @@
         private Guna.Charts.WinForms.GunaAreaDataset gunaAreaDataset1;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Label label13;
     }
 }

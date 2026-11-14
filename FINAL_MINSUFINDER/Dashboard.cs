@@ -94,6 +94,7 @@ namespace FINAL_MINSUFINDER
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+            LoadDashboardCounts();
             HighlightButton(btnDashboard);
             pnlContent.Controls.Clear();
 
@@ -134,6 +135,7 @@ namespace FINAL_MINSUFINDER
             LogIn logIn = new LogIn();
             logIn.Show();
             this.Hide();
+
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
@@ -228,6 +230,11 @@ namespace FINAL_MINSUFINDER
         private void pnlContent_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            LoadRecentActivities();
         }
     }
 }
