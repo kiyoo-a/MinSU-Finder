@@ -219,32 +219,22 @@ namespace FINAL_MINSUFINDER.User_Controls
             {
                 DataGridViewRow row = dgvFoundItems.Rows[e.RowIndex];
 
-                if (row.Cells["FoundItemID"].Value == null)
+                if (row.Cells["FoundItemID"].Value == null || row.Cells["FoundItemID"].Value == DBNull.Value)
                     return;
 
-                selectedFoundItemID =
-                    Convert.ToInt32(row.Cells["FoundItemID"].Value);
+                selectedFoundItemID = Convert.ToInt32(row.Cells["FoundItemID"].Value);
 
-                txtFoundName.Text =
-                    Convert.ToString(row.Cells["ItemName"].Value);
+                txtFoundName.Text = Convert.ToString(row.Cells["ItemName"].Value);
+                txtFoundDescription.Text = Convert.ToString(row.Cells["ItemDescription"].Value);
 
-                txtFoundDescription.Text =
-                    Convert.ToString(row.Cells["ItemDescription"].Value);
-
-                // Load the date from the grid directly into the DateTimePicker
                 if (row.Cells["DateFound"].Value != DBNull.Value)
                 {
                     dtpFoundDate.Value = Convert.ToDateTime(row.Cells["DateFound"].Value);
                 }
 
-                txtFoundLocation.Text =
-                    Convert.ToString(row.Cells["FoundLocation"].Value);
-
-                txtFounder.Text =
-                    Convert.ToString(row.Cells["Founder"].Value);
-
-                cmbStatus.Text =
-                    Convert.ToString(row.Cells["Status"].Value);
+                txtFoundLocation.Text = Convert.ToString(row.Cells["FoundLocation"].Value);
+                txtFounder.Text = Convert.ToString(row.Cells["Founder"].Value);
+                cmbStatus.Text = Convert.ToString(row.Cells["Status"].Value);
             }
         }
 
@@ -341,8 +331,40 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         private void btnCLaim_Click(object sender, EventArgs e)
         {
-            ClaimForm claimForm = new ClaimForm();
-            claimForm.Show();
+
+            if (selectedFoundItemID == -1)
+            {
+                MessageBox.Show("Please select an item from the Found Items list to claim.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
+            string itemName = txtFoundName.Text.Trim();
+            string founder = txtFounder.Text.Trim();
+
+            ClaimForm claimForm = new ClaimForm(itemName, founder);
+            claimForm.ShowDialog();
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            if (dgvFoundItems.DataSource is DataTable dt)
+            {
+                string searchValue = txtSearch.Text.Trim().Replace("'", "''");
+
+                if (string.IsNullOrEmpty(searchValue))
+                {
+                    dt.DefaultView.RowFilter = string.Empty; // Ipakita ang lahat kung walang laman
+                }
+                else
+                {
+                    // Awtomatikong maghahanap sa Item Name, Description, Location, at Founder nang sabay-sabay
+                    dt.DefaultView.RowFilter = string.Format(
+                        "ItemName LIKE '%{0}%' OR ItemDescription LIKE '%{0}%' OR FoundLocation LIKE '%{0}%' OR Founder LIKE '%{0}%'",
+                        searchValue
+                    );
+                }
+            }
         }
     }
 }

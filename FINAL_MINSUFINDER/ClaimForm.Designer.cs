@@ -33,7 +33,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtClaimantFullName = new System.Windows.Forms.TextBox();
+            this.txtFinderFullName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtOwnerFullName = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.guna2GradientPanel2.Controls.Add(this.btnClear);
             this.guna2GradientPanel2.Controls.Add(this.btnSubmit);
             this.guna2GradientPanel2.Controls.Add(this.label8);
-            this.guna2GradientPanel2.Controls.Add(this.txtClaimantFullName);
+            this.guna2GradientPanel2.Controls.Add(this.txtFinderFullName);
             this.guna2GradientPanel2.Controls.Add(this.label9);
             this.guna2GradientPanel2.Controls.Add(this.label10);
             this.guna2GradientPanel2.Controls.Add(this.txtOwnerFullName);
@@ -63,6 +63,7 @@
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
             this.guna2GradientPanel2.Size = new System.Drawing.Size(344, 690);
             this.guna2GradientPanel2.TabIndex = 36;
+            this.guna2GradientPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel2_Paint);
             // 
             // dtpDateClaimed
             // 
@@ -111,14 +112,14 @@
             this.label8.TabIndex = 43;
             this.label8.Text = "Claimant ";
             // 
-            // txtClaimantFullName
+            // txtFinderFullName
             // 
-            this.txtClaimantFullName.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClaimantFullName.Location = new System.Drawing.Point(25, 322);
-            this.txtClaimantFullName.Multiline = true;
-            this.txtClaimantFullName.Name = "txtClaimantFullName";
-            this.txtClaimantFullName.Size = new System.Drawing.Size(298, 34);
-            this.txtClaimantFullName.TabIndex = 42;
+            this.txtFinderFullName.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFinderFullName.Location = new System.Drawing.Point(25, 322);
+            this.txtFinderFullName.Multiline = true;
+            this.txtFinderFullName.Name = "txtFinderFullName";
+            this.txtFinderFullName.Size = new System.Drawing.Size(298, 34);
+            this.txtFinderFullName.TabIndex = 42;
             // 
             // label9
             // 
@@ -155,6 +156,7 @@
             // 
             // txtItemName
             // 
+            this.txtItemName.Enabled = false;
             this.txtItemName.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemName.Location = new System.Drawing.Point(23, 147);
             this.txtItemName.Multiline = true;
@@ -194,6 +196,7 @@
             this.Controls.Add(this.guna2GradientPanel2);
             this.Name = "ClaimForm";
             this.Text = "ClaimForm";
+            this.Load += new System.EventHandler(this.ClaimForm_Load);
             this.guna2GradientPanel2.ResumeLayout(false);
             this.guna2GradientPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -207,7 +210,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtClaimantFullName;
+        private System.Windows.Forms.TextBox txtFinderFullName;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtOwnerFullName;

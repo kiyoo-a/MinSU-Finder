@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.dtpFoundDate = new System.Windows.Forms.DateTimePicker();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
@@ -42,8 +44,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.guna2GradientPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +71,31 @@
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
             this.guna2GradientPanel2.Size = new System.Drawing.Size(344, 690);
             this.guna2GradientPanel2.TabIndex = 35;
-            this.guna2GradientPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel2_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(19, 532);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 24);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Status";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.DisplayMember = "Category";
+            this.cmbStatus.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Claimed",
+            "Unclaimed"});
+            this.cmbStatus.Location = new System.Drawing.Point(22, 559);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(299, 32);
+            this.cmbStatus.TabIndex = 57;
             // 
             // dtpFoundDate
             // 
@@ -171,6 +195,7 @@
             this.txtFoundDescription.Name = "txtFoundDescription";
             this.txtFoundDescription.Size = new System.Drawing.Size(299, 89);
             this.txtFoundDescription.TabIndex = 36;
+            this.txtFoundDescription.TextChanged += new System.EventHandler(this.txtFoundDescription_TextChanged);
             // 
             // txtFoundName
             // 
@@ -217,31 +242,6 @@
             this.label13.TabIndex = 33;
             this.label13.Text = "Manage Found Items";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(19, 532);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 24);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "Status";
-            // 
-            // cmbStatus
-            // 
-            this.cmbStatus.DisplayMember = "Category";
-            this.cmbStatus.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "Claimed",
-            "Unclaimed"});
-            this.cmbStatus.Location = new System.Drawing.Point(22, 559);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(299, 32);
-            this.cmbStatus.TabIndex = 57;
-            // 
             // Found
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -250,6 +250,7 @@
             this.Controls.Add(this.guna2GradientPanel2);
             this.Name = "Found";
             this.Text = "Found";
+            this.Load += new System.EventHandler(this.Found_Load);
             this.guna2GradientPanel2.ResumeLayout(false);
             this.guna2GradientPanel2.PerformLayout();
             this.ResumeLayout(false);

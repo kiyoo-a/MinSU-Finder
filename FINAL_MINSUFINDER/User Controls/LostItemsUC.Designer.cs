@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LostItemsUC));
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvLostItems = new System.Windows.Forms.DataGridView();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
@@ -56,38 +55,22 @@
             this.guna2GradientPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox2
+            // txtSearch
             // 
-            this.textBox2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(245, 128);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(250, 34);
-            this.textBox2.TabIndex = 29;
-            // 
-            // cmbCategory
-            // 
-            this.cmbCategory.DisplayMember = "Category";
-            this.cmbCategory.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Items.AddRange(new object[] {
-            "Item ID",
-            "Item Name",
-            "Description",
-            "Date Lost",
-            "Status"});
-            this.cmbCategory.Location = new System.Drawing.Point(511, 128);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(148, 32);
-            this.cmbCategory.TabIndex = 30;
-            this.cmbCategory.Text = "All Categories";
+            this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(245, 128);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(411, 34);
+            this.txtSearch.TabIndex = 50;
+            this.txtSearch.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBox1.BackgroundImage = global::FINAL_MINSUFINDER.Properties.Resources.image_Photoroom__46_;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(469, 131);
+            this.pictureBox1.Location = new System.Drawing.Point(624, 131);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 28);
             this.pictureBox1.TabIndex = 31;
@@ -331,7 +314,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Arial Narrow", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(14, 18);
+            this.label13.Location = new System.Drawing.Point(26, 18);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(293, 43);
             this.label13.TabIndex = 33;
@@ -346,8 +329,7 @@
             this.Controls.Add(this.guna2GradientPanel2);
             this.Controls.Add(this.dgvLostItems);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.cmbCategory);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtSearch);
             this.Name = "LostItemsUC";
             this.Size = new System.Drawing.Size(1038, 702);
             this.Load += new System.EventHandler(this.LostItemsUC_Load);
@@ -361,8 +343,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgvLostItems;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;

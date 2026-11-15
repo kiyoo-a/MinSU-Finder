@@ -184,7 +184,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             }
         }
 
-        // CLICK GRID ROW TO POPULATE FIELDS
         private void dgvLostItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -210,7 +209,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             }
         }
 
-        // UPDATE LOST ITEM
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (selectedLostItemID == -1)
@@ -419,8 +417,26 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         private void btnClear_Click_1(object sender, EventArgs e)
         {
+            if (selectedLostItemID == -1)
+            {
+                MessageBox.Show("Please select an item from the Lost Items list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             Found found = new Found();
-            found.Show();
+
+            found.ItemName = txtLostName.Text.Trim();
+            found.ItemDescription = txtLostDescription.Text.Trim();
+            found.DateFound = dtpLostDate.Value;
+            found.FoundLocation = txtLostLocation.Text.Trim();
+
+            found.Status = "Found";
+
+            found.LostItemID = selectedLostItemID;
+
+            found.ShowDialog();
+
+            LoadLostItems();
+            ClearFields();
         }
 
         private void dgvLostItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -435,6 +451,9 @@ namespace FINAL_MINSUFINDER.User_Controls
 
             DataGridViewRow row = dgvLostItems.Rows[e.RowIndex];
 
+            if (row.Cells["LostItemID"].Value == null || row.Cells["LostItemID"].Value == DBNull.Value)
+                return;
+
             selectedLostItemID = Convert.ToInt32(
                 row.Cells["LostItemID"].Value
             );
@@ -444,27 +463,41 @@ namespace FINAL_MINSUFINDER.User_Controls
             );
 
             txtLostDescription.Text = Convert.ToString(
-                row.Cells["ItemDescription"].Value
-            );
+                row.Cells["ItemDescription"].Value);
 
             if (row.Cells["DateLost"].Value != DBNull.Value)
             {
                 dtpLostDate.Value = Convert.ToDateTime(
-                    row.Cells["DateLost"].Value
-                );
+                    row.Cells["DateLost"].Value);
             }
-
-            txtLostLocation.Text = Convert.ToString(
-                row.Cells["LastLocation"].Value
-            );
+            txtLostLocation.Text = Convert.ToString(row.Cells["LastLocation"].Value);
 
             txtOwner.Text = Convert.ToString(
                 row.Cells["ItemOwner"].Value
             );
 
             cmbStatus.Text = Convert.ToString(
-                row.Cells["Status"].Value
-            );
+                row.Cells["Status"].Value);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (dgvLostItems.DataSource is DataTable dt)
+            {
+                string searchValue = txtSearch.Text.Trim().Replace("'", "''");
+
+                if (string.IsNullOrEmpty(searchValue))
+                {
+                    dt.DefaultView.RowFilter = string.Empty; 
+                }
+                else
+                {
+                    dt.DefaultView.RowFilter = string.Format(
+                        "ItemName LIKE '%{0}%' OR ItemDescription LIKE '%{0}%' OR LastLocation LIKE '%{0}%' OR ItemOwner LIKE '%{0}%'",
+                        searchValue
+                    );
+                }
+            }   
         }
     }
 }

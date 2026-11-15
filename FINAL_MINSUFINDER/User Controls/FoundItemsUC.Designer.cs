@@ -51,8 +51,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.dgvFoundItems = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cmbCategory = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.guna2GradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoundItems)).BeginInit();
@@ -328,37 +327,21 @@
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBox1.BackgroundImage = global::FINAL_MINSUFINDER.Properties.Resources.image_Photoroom__46_;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(469, 131);
+            this.pictureBox1.Location = new System.Drawing.Point(624, 131);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 28);
             this.pictureBox1.TabIndex = 52;
             this.pictureBox1.TabStop = false;
             // 
-            // cmbCategory
+            // txtSearch
             // 
-            this.cmbCategory.DisplayMember = "Category";
-            this.cmbCategory.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Items.AddRange(new object[] {
-            "Item ID",
-            "Item Name",
-            "Description",
-            "Date Lost",
-            "Status"});
-            this.cmbCategory.Location = new System.Drawing.Point(511, 128);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(148, 32);
-            this.cmbCategory.TabIndex = 51;
-            this.cmbCategory.Text = "All Categories";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(245, 128);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(250, 34);
-            this.textBox6.TabIndex = 50;
+            this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(245, 128);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(411, 34);
+            this.txtSearch.TabIndex = 50;
+            this.txtSearch.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // FoundItemsUC
             // 
@@ -368,9 +351,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvFoundItems);
-            this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.guna2GradientPanel2);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label4);
             this.Name = "FoundItemsUC";
             this.Size = new System.Drawing.Size(1038, 702);
@@ -406,8 +388,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dgvFoundItems;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox cmbCategory;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCLaim;
