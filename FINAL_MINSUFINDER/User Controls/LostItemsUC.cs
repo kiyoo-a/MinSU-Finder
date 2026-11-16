@@ -24,7 +24,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             LoadLostItems();
         }
 
-        // ADD BUTTON
         private void button6_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
@@ -61,7 +60,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             ClearFields();
         }
 
-        // UPDATE LOGIC (Parehong nakakabit sa btnUpdate_Click at btnUpdate_Click_1 para siguradong gagana)
         private void UpdateProcess()
         {
             if (selectedLostItemID == -1)
@@ -84,7 +82,7 @@ namespace FINAL_MINSUFINDER.User_Controls
                 if (UserDatabaseHelper.UpdateLostItem(selectedLostItemID, txtLostName.Text, txtLostDescription.Text, dtpLostDate.Value, txtLostLocation.Text, txtOwner.Text, cmbStatus.Text))
                 {
                     MessageBox.Show("Lost item updated successfully!");
-                    LoadLostItems(); // I-refresh ang table!
+                    LoadLostItems();
                     ClearFields();
                 }
             }
@@ -95,12 +93,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             UpdateProcess();
         }
 
-        private void btnUpdate_Click_1(object sender, EventArgs e)
-        {
-            UpdateProcess();
-        }
-
-        // DELETE LOGIC
         private void DeleteProcess()
         {
             if (selectedLostItemID == -1)
@@ -114,7 +106,7 @@ namespace FINAL_MINSUFINDER.User_Controls
                 if (UserDatabaseHelper.DeleteLostItem(selectedLostItemID))
                 {
                     MessageBox.Show("Lost item deleted successfully!");
-                    LoadLostItems(); // I-refresh ang table!
+                    LoadLostItems();
                     ClearFields();
                 }
             }
@@ -125,12 +117,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             DeleteProcess();
         }
 
-        private void btnDelete_Click_1(object sender, EventArgs e)
-        {
-            DeleteProcess();
-        }
-
-        // CELL CLICK LOGIC
         private void SelectRow(DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -160,12 +146,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             SelectRow(e);
         }
 
-        private void dgvLostItems_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            SelectRow(e);
-        }
-
-        // MARK AS FOUND BUTTON
         private void btnClear_Click_1(object sender, EventArgs e)
         {
             if (selectedLostItemID == -1)
@@ -188,11 +168,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             ClearFields();
         }
 
-        private void dgvLostItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        // SEARCH BAR
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (dgvLostItems.DataSource is DataTable dt)

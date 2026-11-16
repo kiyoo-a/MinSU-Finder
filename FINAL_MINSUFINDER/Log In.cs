@@ -47,14 +47,7 @@ namespace FINAL_MINSUFINDER
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            using (var registerForm = new Register())
-            {
-                registerForm.ShowDialog(this);
-            }
 
-        }
 
         private void LogIn_Load(object sender, EventArgs e)
         {

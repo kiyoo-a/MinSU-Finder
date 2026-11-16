@@ -12,54 +12,53 @@ using System.Windows.Forms;
 namespace FINAL_MINSUFINDER
 {
     public partial class ClaimForm : Form
-{
-    public string PassedItemName { get; set; }
-    public string PassedFounder { get; set; }
-    public int FoundItemID { get; set; } = -1; // Idagdag ito
-
-    public ClaimForm()
     {
-        InitializeComponent();
-    }
+        public string PassedItemName { get; set; }
+        public string PassedFounder { get; set; }
+        public int FoundItemID { get; set; } = -1;
 
-    public ClaimForm(string itemName, string founderName, int foundItemID = -1)
-    {
-        InitializeComponent();
-        PassedItemName = itemName;
-        PassedFounder = founderName;
-        FoundItemID = foundItemID; // Saluhin ang ID
-
-        txtItemName.Text = itemName;
-        txtFinder.Text = founderName;
-    }
-
-    private void ClaimForm_Load(object sender, EventArgs e)
-    {
-        dtpDateClaimed.Value = DateTime.Now;
-    }
-
-    private void btnSubmit_Click(object sender, EventArgs e)
-    {
-        if (string.IsNullOrWhiteSpace(txtItemName.Text) ||
-            string.IsNullOrWhiteSpace(txtFinder.Text) ||
-            string.IsNullOrWhiteSpace(txtClaimant.Text))
+        public ClaimForm()
         {
-            MessageBox.Show("Please complete all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return;
+            InitializeComponent();
         }
 
-        // Ipasa ang FoundItemID sa SubmitClaim para maging "Claimed" ang status
-        if (UserDatabaseHelper.SubmitClaim(
-            txtItemName.Text.Trim(),
-            txtClaimant.Text.Trim(),
-            txtFinder.Text.Trim(),
-            txtClaimant.Text.Trim(),
-            dtpDateClaimed.Value,
-            FoundItemID)) // Isama ang ID dito
+        public ClaimForm(string itemName, string founderName, int foundItemID = -1)
         {
-            MessageBox.Show("Claim submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            InitializeComponent();
+            PassedItemName = itemName;
+            PassedFounder = founderName;
+            FoundItemID = foundItemID;
+
+            txtItemName.Text = itemName;
+            txtFinder.Text = founderName;
+        }
+
+        private void ClaimForm_Load(object sender, EventArgs e)
+        {
+            dtpDateClaimed.Value = DateTime.Now;
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtItemName.Text) ||
+                string.IsNullOrWhiteSpace(txtFinder.Text) ||
+                string.IsNullOrWhiteSpace(txtClaimant.Text))
+            {
+                MessageBox.Show("Please complete all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (UserDatabaseHelper.SubmitClaim(
+                txtItemName.Text.Trim(),
+                txtClaimant.Text.Trim(),
+                txtFinder.Text.Trim(),
+                txtClaimant.Text.Trim(),
+                dtpDateClaimed.Value,
+                FoundItemID))
+            {
+                MessageBox.Show("Claim submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
         }
     }
-}
 }

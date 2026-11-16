@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClaimsUC));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -50,10 +51,10 @@
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(212, 127);
+            this.txtSearch.Location = new System.Drawing.Point(241, 127);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(784, 34);
+            this.txtSearch.Size = new System.Drawing.Size(755, 34);
             this.txtSearch.TabIndex = 32;
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -67,7 +68,15 @@
             this.dgvClaims.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvClaims.BackgroundColor = System.Drawing.Color.White;
             this.dgvClaims.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClaims.Location = new System.Drawing.Point(32, 176);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClaims.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvClaims.Location = new System.Drawing.Point(35, 195);
             this.dgvClaims.Name = "dgvClaims";
             this.dgvClaims.RowHeadersVisible = false;
             this.dgvClaims.RowHeadersWidth = 51;
@@ -85,6 +94,7 @@
             this.Controls.Add(this.dgvClaims);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtSearch);
+            this.DoubleBuffered = true;
             this.Name = "ClaimsUC";
             this.Size = new System.Drawing.Size(1038, 702);
             this.Load += new System.EventHandler(this.ClaimsUC_Load);

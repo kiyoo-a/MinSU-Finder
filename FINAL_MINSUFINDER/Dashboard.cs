@@ -38,7 +38,6 @@ namespace FINAL_MINSUFINDER
             btnFoundItems.BackColor = Color.White;
             btnClaims.BackColor = Color.White;
             btnLeaderboard.BackColor = Color.White;
-            btnUsers.BackColor = Color.White;
 
             activeBtn.BackColor = Color.LightGreen;
         }
@@ -51,7 +50,7 @@ namespace FINAL_MINSUFINDER
                 lblFoundCount.Text = counts["FoundCount"].ToString();
                 lblLostCount.Text = counts["LostCount"].ToString();
                 lblClaimCount.Text = counts["ClaimCount"].ToString();
-                lblUserCount.Text = counts["UserCount"].ToString();
+                
             }
         }
 
@@ -96,12 +95,6 @@ namespace FINAL_MINSUFINDER
             LoadUserControl(new LeaderboardUC());
         }
 
-        private void btnUsers_Click(object sender, EventArgs e)
-        {
-            HighlightButton(btnUsers);
-            LoadUserControl(new Users());
-        }
-
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadRecentActivities();
@@ -112,6 +105,16 @@ namespace FINAL_MINSUFINDER
             LogIn logIn = new LogIn();
             logIn.Show();
             this.Hide();
+        }
+
+        private void pnlContent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblUserCount_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

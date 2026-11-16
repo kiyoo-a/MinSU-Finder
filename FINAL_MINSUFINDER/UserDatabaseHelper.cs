@@ -7,9 +7,6 @@ namespace FINAL_MINSUFINDER
 {
     public static class UserDatabaseHelper
     {
-        // ==========================================
-        // CORE DATABASE RUNNERS (Internal)
-        // ==========================================
         private static DataTable GetTable(string query)
         {
             try
@@ -56,17 +53,13 @@ namespace FINAL_MINSUFINDER
             }
         }
 
-        // ==========================================
-        // 1. DASHBOARD METHODS
-        // ==========================================
         public static DataRow GetDashboardCounts()
         {
             string query = @"
                 SELECT
                     (SELECT COUNT(*) FROM FoundItems) AS FoundCount,
                     (SELECT COUNT(*) FROM LostItems WHERE Status = 'Lost') AS LostCount,
-                    (SELECT COUNT(*) FROM Claims) AS ClaimCount,
-                    (SELECT COUNT(*) FROM UsersAccount) AS UserCount";
+                    (SELECT COUNT(*) FROM Claims) AS ClaimCount";
             DataTable dt = GetTable(query);
             return (dt != null && dt.Rows.Count > 0) ? dt.Rows[0] : null;
         }
@@ -74,22 +67,17 @@ namespace FINAL_MINSUFINDER
         public static void LoadRecentActivities(DataGridView dgv)
         {
             string query = @"
-                SELECT TOP 20 * FROM (
-                    SELECT 'Registration' AS ActivityType, 'New student registered' AS Description, FullName AS ActivityUser, DateRegistered AS ActivityDate FROM UsersAccount
+                SELECT TOP 20 ActivityType, Description, ActivityUser, ActivityDate FROM (
+                    SELECT 'Lost Item' AS ActivityType, CONCAT('Reported a lost item: ', ItemName) AS Description, ItemOwner AS ActivityUser, DateLost AS ActivityDate FROM LostItems
                     UNION ALL
-                    SELECT 'Lost Item', CONCAT('Reported a lost item: ', ItemName), ItemOwner, DateLost FROM LostItems
+                    SELECT 'Found Item' AS ActivityType, CONCAT('Reported a found item: ', ItemName) AS Description, Founder AS ActivityUser, DateFound AS ActivityDate FROM FoundItems
                     UNION ALL
-                    SELECT 'Found Item', CONCAT('Reported a found item: ', ItemName), Founder, DateFound FROM FoundItems
-                    UNION ALL
-                    SELECT 'Claim', CONCAT('Claimed an item: ', ItemName), ClaimantFullName, DateClaimed FROM Claims
+                    SELECT 'Claim' AS ActivityType, CONCAT('Claimed an item: ', ItemName) AS Description, ClaimantFullName AS ActivityUser, DateClaimed AS ActivityDate FROM Claims
                 ) AS Activities
                 ORDER BY ActivityDate DESC";
             dgv.DataSource = GetTable(query);
         }
 
-        // ==========================================
-        // 2. LOST ITEMS METHODS
-        // ==========================================
         public static void LoadLostItems(DataGridView dgv)
         {
             string query = "SELECT LostItemID, ItemName, ItemDescription, DateLost, LastLocation, ItemOwner, Status FROM LostItems";
@@ -132,9 +120,6 @@ namespace FINAL_MINSUFINDER
             return RunQuery("DELETE FROM LostItems WHERE LostItemID = @ID", cmd => cmd.Parameters.AddWithValue("@ID", id));
         }
 
-        // ==========================================
-        // 3. FOUND ITEMS METHODS
-        // ==========================================
         public static void LoadFoundItems(DataGridView dgv)
         {
             string query = "SELECT FoundItemID, ItemName, ItemDescription, DateFound, FoundLocation, Founder, Status FROM FoundItems";
@@ -182,9 +167,6 @@ namespace FINAL_MINSUFINDER
             return RunQuery("DELETE FROM FoundItems WHERE FoundItemID = @ID", cmd => cmd.Parameters.AddWithValue("@ID", id));
         }
 
-        // ==========================================
-        // 4. CLAIMS METHODS
-        // ==========================================
         public static void LoadClaims(DataGridView dgv)
         {
             string query = @"SELECT ClaimID, OwnerFullName, ClaimantFullName, DateClaimed, ItemName, FinderFullName 
@@ -206,7 +188,6 @@ namespace FINAL_MINSUFINDER
                 cmd.Parameters.AddWithValue("@Date", dateClaimed);
             });
 
-            // Kung successful ang pag-save ng claim at may valid na foundItemID, i-update ang status sa FoundItems
             if (success && foundItemID != -1)
             {
                 RunQuery("UPDATE FoundItems SET Status = 'Claimed' WHERE FoundItemID = @ID", cmd => {
@@ -217,35 +198,6 @@ namespace FINAL_MINSUFINDER
             return success;
         }
 
-        // ==========================================
-        // 5. USERS ACCOUNT METHODS
-        // ==========================================
-        public static void LoadUsers(DataGridView dgv)
-        {
-            dgv.DataSource = GetTable("SELECT * FROM UsersAccount");
-        }
-
-        public static bool UpdateUser(string idNumber, string fullName, string userName, string course, string password)
-        {
-            string query = @"UPDATE UsersAccount SET FullName = @FullName, UserName = @UserName, 
-                             Course = @Course, Password = @Password WHERE IdNumber = @IdNumber";
-            return RunQuery(query, cmd => {
-                cmd.Parameters.AddWithValue("@IdNumber", idNumber.Trim());
-                cmd.Parameters.AddWithValue("@FullName", fullName.Trim());
-                cmd.Parameters.AddWithValue("@UserName", userName.Trim());
-                cmd.Parameters.AddWithValue("@Course", course.Trim());
-                cmd.Parameters.AddWithValue("@Password", password.Trim());
-            });
-        }
-
-        public static bool DeleteUser(string idNumber)
-        {
-            return RunQuery("DELETE FROM UsersAccount WHERE IdNumber = @IdNumber", cmd => cmd.Parameters.AddWithValue("@IdNumber", idNumber.Trim()));
-        }
-
-        // ==========================================
-        // 6. LEADERBOARD METHOD
-        // ==========================================
         public static DataTable GetLeaderboard(string filterType, out string timeLabelText)
         {
             string dateCondition = "";
@@ -273,14 +225,14 @@ namespace FINAL_MINSUFINDER
             }
 
             string query = $@"SELECT ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) AS [Rank], 
-                              LTRIM(RTRIM(Founder)) AS [Student Name], COUNT(*) AS [Items Reported],
-                              (COUNT(*) * 10) AS [Total Points] 
-                              FROM FoundItems {dateCondition}
-                              GROUP BY LTRIM(RTRIM(Founder))
-                              HAVING LTRIM(RTRIM(Founder)) IS NOT NULL AND LTRIM(RTRIM(Founder)) <> '' 
-                              ORDER BY [Items Reported] DESC";
+                             LTRIM(RTRIM(Founder)) AS [Student Name], COUNT(*) AS [Items Reported],
+                             (COUNT(*) * 10) AS [Total Points] 
+                             FROM FoundItems {dateCondition}
+                             GROUP BY LTRIM(RTRIM(Founder))
+                             HAVING LTRIM(RTRIM(Founder)) IS NOT NULL AND LTRIM(RTRIM(Founder)) <> '' 
+                             ORDER BY [Items Reported] DESC";
 
             return GetTable(query);
         }
     }
-}   
+}
