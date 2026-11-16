@@ -31,7 +31,7 @@ namespace FINAL_MINSUFINDER
             txtFoundName.Clear();
             txtFoundDescription.Clear();
             txtFoundLocation.Clear();
-            txtFounder.Clear();
+            txtFinder.Clear();
             dtpFoundDate.Value = DateTime.Now;
         }
         private void btnClear_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace FINAL_MINSUFINDER
         private void btnSubmit_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtFoundName.Text) || string.IsNullOrWhiteSpace(txtFoundDescription.Text) ||
-                string.IsNullOrWhiteSpace(txtFoundLocation.Text) || string.IsNullOrWhiteSpace(txtFounder.Text))
+                string.IsNullOrWhiteSpace(txtFoundLocation.Text) || string.IsNullOrWhiteSpace(txtFinder.Text))
             {
                 MessageBox.Show("Please complete all fields.");
                 return;
@@ -65,7 +65,7 @@ namespace FINAL_MINSUFINDER
                         cmd.Parameters.AddWithValue("@ItemDescription", txtFoundDescription.Text.Trim());
                         cmd.Parameters.AddWithValue("@DateFound", dtpFoundDate.Value);
                         cmd.Parameters.AddWithValue("@FoundLocation", txtFoundLocation.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Founder", txtFounder.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Founder", txtFinder.Text.Trim());
 
                         cmd.ExecuteNonQuery();
                     }

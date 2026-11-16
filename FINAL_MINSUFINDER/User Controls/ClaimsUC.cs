@@ -27,7 +27,9 @@ namespace FINAL_MINSUFINDER.User_Controls
             using (SqlConnection con = db.GetConnection())
             {
                 con.Open();
-                string query = "SELECT * FROM Claims";
+                string query = @"SELECT ClaimID, OwnerFullName, ClaimantFullName, DateClaimed, ItemName, FinderFullName 
+                 FROM Claims 
+                 ORDER BY ClaimID DESC";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
                 {
                     DataTable dt = new DataTable();
@@ -39,6 +41,11 @@ namespace FINAL_MINSUFINDER.User_Controls
         private void ClaimsUC_Load(object sender, EventArgs e)
         {
             LoadClaims();
+        }
+
+        private void dgvClaims_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

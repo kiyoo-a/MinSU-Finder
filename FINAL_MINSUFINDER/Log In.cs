@@ -25,6 +25,7 @@ namespace FINAL_MINSUFINDER
         {
             Dashboard dashboard = new Dashboard();
             dashboard.Show();
+            this.Hide();
 
         }  
         private void RoundButton(Button btn, int radius)

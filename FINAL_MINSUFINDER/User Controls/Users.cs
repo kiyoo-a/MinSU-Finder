@@ -68,8 +68,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             {
                 DataGridViewRow row = dgvUsers.Rows[e.RowIndex];
 
-                // Palitan ang "idColumn" ng eksaktong Name property ng column sa iyong DataGridView Designer
-
                 txtID.Text = row.Cells["idNumber"].Value?.ToString();
 
                 txtFullName.Text = row.Cells["FullName"].Value?.ToString();

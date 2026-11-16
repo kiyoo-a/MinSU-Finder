@@ -63,56 +63,61 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
-                string.IsNullOrWhiteSpace(txtLostDescription.Text) ||
-                string.IsNullOrWhiteSpace(txtLostLocation.Text) ||
-                string.IsNullOrWhiteSpace(txtOwner.Text) ||
-                string.IsNullOrWhiteSpace(cmbStatus.Text))
+    string itemStatus = cmbStatus.Text.Trim();
+
+    if (string.IsNullOrEmpty(itemStatus))
+    {
+        itemStatus = "Lost";
+    }
+
+    if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
+       string.IsNullOrWhiteSpace(txtLostDescription.Text) ||
+       string.IsNullOrWhiteSpace(txtLostLocation.Text) ||
+       string.IsNullOrWhiteSpace(txtOwner.Text))
+    {
+        MessageBox.Show("Please complete all required fields.");
+        return;
+    }
+
+    try
+    {
+        DatabaseConnection db = new DatabaseConnection();
+
+        using (SqlConnection con = db.GetConnection())
+        {
+            con.Open();
+
+            string query = @"INSERT INTO LostItems 
+                            (ItemName, ItemDescription, DateLost, LastLocation, ItemOwner, Status) 
+                            VALUES 
+                            (@ItemName, @ItemDescription, @DateLost, @LastLocation, @ItemOwner, @Status)";
+
+            using (SqlCommand cmd = new SqlCommand(query, con))
             {
-                MessageBox.Show("Please complete all fields.");
-                return;
-            }
+                cmd.Parameters.AddWithValue("@ItemName", txtLostName.Text.Trim());
+                cmd.Parameters.AddWithValue("@ItemDescription", txtLostDescription.Text.Trim());
+                cmd.Parameters.AddWithValue("@DateLost", dtpLostDate.Value);
+                cmd.Parameters.AddWithValue("@LastLocation", txtLostLocation.Text.Trim());
+                cmd.Parameters.AddWithValue("@ItemOwner", txtOwner.Text.Trim());
+                
+                // Gamitin ang ating nasuring variable na may default na "Lost"
+                cmd.Parameters.AddWithValue("@Status", itemStatus);
 
-            try
-            {
-                DatabaseConnection db = new DatabaseConnection();
-
-                using (SqlConnection con = db.GetConnection())
-                {
-                    con.Open();
-
-                    string query = @"INSERT INTO LostItems
-                                    (ItemName, ItemDescription, DateLost,
-                                     LastLocation, ItemOwner, Status)
-                                    VALUES
-                                    (@ItemName, @ItemDescription, @DateLost,
-                                     @LastLocation, @Owner, @Status)";
-
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@ItemName", txtLostName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@ItemDescription", txtLostDescription.Text.Trim());
-                        cmd.Parameters.AddWithValue("@DateLost", dtpLostDate.Value);
-                        cmd.Parameters.AddWithValue("@LastLocation", txtLostLocation.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Owner", txtOwner.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Status", cmbStatus.Text);
-
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Lost item reported successfully!");
-
-                LoadLostItems();
-                ClearFields();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error adding lost item: " + ex.Message);
+                cmd.ExecuteNonQuery();
             }
         }
 
-        // CLEAR FIELDS METHOD
+        MessageBox.Show("Lost item added successfully!");
+
+        LoadLostItems(); 
+        ClearFields();
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Error adding lost item: " + ex.Message);
+    }
+        }
+        
         private void ClearFields()
         {
             txtLostName.Clear();
@@ -130,7 +135,6 @@ namespace FINAL_MINSUFINDER.User_Controls
             ClearFields();
         }
 
-        // DELETE LOST ITEM
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (selectedLostItemID == -1)
@@ -220,8 +224,7 @@ namespace FINAL_MINSUFINDER.User_Controls
             if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
                 string.IsNullOrWhiteSpace(txtLostDescription.Text) ||
                 string.IsNullOrWhiteSpace(txtLostLocation.Text) ||
-                string.IsNullOrWhiteSpace(txtOwner.Text) ||
-                string.IsNullOrWhiteSpace(cmbStatus.Text))
+                string.IsNullOrWhiteSpace(txtOwner.Text))
             {
                 MessageBox.Show("Please complete all fields.");
                 return;
@@ -349,8 +352,7 @@ namespace FINAL_MINSUFINDER.User_Controls
             if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
                 string.IsNullOrWhiteSpace(txtLostDescription.Text) ||
                 string.IsNullOrWhiteSpace(txtLostLocation.Text) ||
-                string.IsNullOrWhiteSpace(txtOwner.Text) ||
-                string.IsNullOrWhiteSpace(cmbStatus.Text))
+                string.IsNullOrWhiteSpace(txtOwner.Text))
             {
                 MessageBox.Show("Please complete all fields.");
                 return;
@@ -373,14 +375,9 @@ namespace FINAL_MINSUFINDER.User_Controls
                     {
                         con.Open();
 
-                        string query = @"UPDATE LostItems
-                                SET ItemName = @ItemName,
-                                    ItemDescription = @Description,
-                                    DateLost = @DateLost,
-                                    LastLocation = @Location,
-                                    ItemOwner = @Owner,
-                                    Status = @Status
-                                WHERE LostItemID = @ID";
+                        string query = @"UPDATE LostItems SET ItemName = @ItemName, ItemDescription = @Description,
+                                         DateLost = @DateLost, LastLocation = @Location, ItemOwner = @Owner,
+                                         Status = @Status WHERE LostItemID = @ID";
 
                         using (SqlCommand cmd = new SqlCommand(query, con))
                         {
@@ -454,30 +451,21 @@ namespace FINAL_MINSUFINDER.User_Controls
             if (row.Cells["LostItemID"].Value == null || row.Cells["LostItemID"].Value == DBNull.Value)
                 return;
 
-            selectedLostItemID = Convert.ToInt32(
-                row.Cells["LostItemID"].Value
-            );
+            selectedLostItemID = Convert.ToInt32(row.Cells["LostItemID"].Value);
 
-            txtLostName.Text = Convert.ToString(
-                row.Cells["ItemName"].Value
-            );
+            txtLostName.Text = Convert.ToString(row.Cells["ItemName"].Value);
 
-            txtLostDescription.Text = Convert.ToString(
-                row.Cells["ItemDescription"].Value);
+            txtLostDescription.Text = Convert.ToString(row.Cells["ItemDescription"].Value);
 
             if (row.Cells["DateLost"].Value != DBNull.Value)
             {
-                dtpLostDate.Value = Convert.ToDateTime(
-                    row.Cells["DateLost"].Value);
+                dtpLostDate.Value = Convert.ToDateTime(row.Cells["DateLost"].Value);
             }
             txtLostLocation.Text = Convert.ToString(row.Cells["LastLocation"].Value);
 
-            txtOwner.Text = Convert.ToString(
-                row.Cells["ItemOwner"].Value
-            );
+            txtOwner.Text = Convert.ToString(row.Cells["ItemOwner"].Value);
 
-            cmbStatus.Text = Convert.ToString(
-                row.Cells["Status"].Value);
+            cmbStatus.Text = Convert.ToString(row.Cells["Status"].Value);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -493,9 +481,8 @@ namespace FINAL_MINSUFINDER.User_Controls
                 else
                 {
                     dt.DefaultView.RowFilter = string.Format(
-                        "ItemName LIKE '%{0}%' OR ItemDescription LIKE '%{0}%' OR LastLocation LIKE '%{0}%' OR ItemOwner LIKE '%{0}%'",
-                        searchValue
-                    );
+                        "ItemName LIKE '%{0}%' OR ItemDescription LIKE '%{0}%' OR LastLocation " +
+                        "LIKE '%{0}%' OR ItemOwner LIKE '%{0}%'", searchValue);
                 }
             }   
         }

@@ -15,28 +15,32 @@ namespace FINAL_MINSUFINDER
     {
         public string PassedItemName { get; set; }
         public string PassedFounder { get; set; }
-        
+
         public ClaimForm()
         {
             InitializeComponent();
         }
+
+        // Constructor na tumatanggap ng Item Name at Finder/Founder Name
         public ClaimForm(string itemName, string founderName)
         {
             InitializeComponent();
 
-            // Direktang ilagay sa text box pagbukas na pagbukas pa lang ng form
+            PassedItemName = itemName;
+            PassedFounder = founderName;
+
             txtItemName.Text = itemName;
-            txtFinderFullName.Text = founderName;    // Siguraduhing ito ang eksaktong pangalan ng text box para sa Item Name
-                                                 // txtFinderName.Text = founderName; // Alisin ang comment '//' kung may text box ka para sa Finder Name
+            txtFinder.Text = founderName;    // Nailagay na ang Finder Name
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            // Validation: Siguraduhing walang blangko sa mga mahalagang fields
             if (string.IsNullOrWhiteSpace(txtItemName.Text) ||
-        string.IsNullOrWhiteSpace(txtFinderFullName.Text) ||
-        string.IsNullOrWhiteSpace(txtOwnerFullName.Text))
+                string.IsNullOrWhiteSpace(txtFinder.Text) ||
+                string.IsNullOrWhiteSpace(txtClaimant.Text))
             {
-                MessageBox.Show("Please complete all fields.");
+                MessageBox.Show("Please complete all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -48,42 +52,43 @@ namespace FINAL_MINSUFINDER
                 {
                     con.Open();
 
-                    string query = @"
-                INSERT INTO Claims
-                (ItemName, OwnerFullName, ClaimantFullName, DateClaimed)
-                VALUES
-                (@ItemName, @Owner, @Claimant, @DateClaimed)";
+                    // SQL Query para i-save ang lahat ng impormasyon sa tamang mga kolum
+                    string query = @"INSERT INTO Claims (ItemName, OwnerFullName, FinderFullName, ClaimantFullName, DateClaimed)
+                                     VALUES (@ItemName, @OwnerFullName, @FinderFullName, @ClaimantFullName, @DateClaimed)";
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.Parameters.AddWithValue("@ItemName",
-                            txtItemName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ItemName", txtItemName.Text.Trim());
 
-                        cmd.Parameters.AddWithValue("@Owner",
-                            txtOwnerFullName.Text.Trim());
+                        // Kolum para sa Owner (Pwede mong palitan ng txtOwnerFullName.Text kung may hiwalay kang textbox para rito)
+                        cmd.Parameters.AddWithValue("@OwnerFullName", txtClaimant.Text.Trim());
 
-                        cmd.Parameters.AddWithValue("@Claimant",
-                            txtFinderFullName.Text.Trim());
+                        // Kolum para sa Finder Name (galing sa txtFinder)
+                        cmd.Parameters.AddWithValue("@FinderFullName", txtFinder.Text.Trim());
 
-                        cmd.Parameters.AddWithValue("@DateClaimed",
-                            dtpDateClaimed.Value);
+                        // Kolum para sa Claimant Name (galing sa txtClaimant)
+                        cmd.Parameters.AddWithValue("@ClaimantFullName", txtClaimant.Text.Trim());
+
+                        // Petsa kung kailan claim
+                        cmd.Parameters.AddWithValue("@DateClaimed", dtpDateClaimed.Value);
 
                         cmd.ExecuteNonQuery();
                     }
                 }
 
-                MessageBox.Show("Claim recorded successfully!");
+                MessageBox.Show("Claim submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error recording claim: " + ex.Message);
+                MessageBox.Show("Error submitting claim: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.Hide();
         }
 
         private void ClaimForm_Load(object sender, EventArgs e)
         {
-
+            // Itakda ang kasalukuyang petsa at oras sa DateTimePicker pagbukas
+            dtpDateClaimed.Value = DateTime.Now;
         }
 
         private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)

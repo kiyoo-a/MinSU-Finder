@@ -33,10 +33,10 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtFinderFullName = new System.Windows.Forms.TextBox();
+            this.txtFinder = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtOwnerFullName = new System.Windows.Forms.TextBox();
+            this.txtClaimant = new System.Windows.Forms.TextBox();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -49,10 +49,10 @@
             this.guna2GradientPanel2.Controls.Add(this.btnClear);
             this.guna2GradientPanel2.Controls.Add(this.btnSubmit);
             this.guna2GradientPanel2.Controls.Add(this.label8);
-            this.guna2GradientPanel2.Controls.Add(this.txtFinderFullName);
+            this.guna2GradientPanel2.Controls.Add(this.txtFinder);
             this.guna2GradientPanel2.Controls.Add(this.label9);
             this.guna2GradientPanel2.Controls.Add(this.label10);
-            this.guna2GradientPanel2.Controls.Add(this.txtOwnerFullName);
+            this.guna2GradientPanel2.Controls.Add(this.txtClaimant);
             this.guna2GradientPanel2.Controls.Add(this.txtItemName);
             this.guna2GradientPanel2.Controls.Add(this.label11);
             this.guna2GradientPanel2.Controls.Add(this.label13);
@@ -112,14 +112,14 @@
             this.label8.TabIndex = 43;
             this.label8.Text = "Claimant ";
             // 
-            // txtFinderFullName
+            // txtFinder
             // 
-            this.txtFinderFullName.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFinderFullName.Location = new System.Drawing.Point(25, 322);
-            this.txtFinderFullName.Multiline = true;
-            this.txtFinderFullName.Name = "txtFinderFullName";
-            this.txtFinderFullName.Size = new System.Drawing.Size(298, 34);
-            this.txtFinderFullName.TabIndex = 42;
+            this.txtFinder.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFinder.Location = new System.Drawing.Point(25, 322);
+            this.txtFinder.Multiline = true;
+            this.txtFinder.Name = "txtFinder";
+            this.txtFinder.Size = new System.Drawing.Size(298, 34);
+            this.txtFinder.TabIndex = 42;
             // 
             // label9
             // 
@@ -145,14 +145,14 @@
             this.label10.TabIndex = 37;
             this.label10.Text = "Finder Name";
             // 
-            // txtOwnerFullName
+            // txtClaimant
             // 
-            this.txtOwnerFullName.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOwnerFullName.Location = new System.Drawing.Point(24, 228);
-            this.txtOwnerFullName.Multiline = true;
-            this.txtOwnerFullName.Name = "txtOwnerFullName";
-            this.txtOwnerFullName.Size = new System.Drawing.Size(299, 36);
-            this.txtOwnerFullName.TabIndex = 36;
+            this.txtClaimant.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClaimant.Location = new System.Drawing.Point(24, 228);
+            this.txtClaimant.Multiline = true;
+            this.txtClaimant.Name = "txtClaimant";
+            this.txtClaimant.Size = new System.Drawing.Size(299, 36);
+            this.txtClaimant.TabIndex = 36;
             // 
             // txtItemName
             // 
@@ -210,10 +210,10 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtFinderFullName;
+        private System.Windows.Forms.TextBox txtFinder;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtOwnerFullName;
+        private System.Windows.Forms.TextBox txtClaimant;
         private System.Windows.Forms.TextBox txtItemName;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;

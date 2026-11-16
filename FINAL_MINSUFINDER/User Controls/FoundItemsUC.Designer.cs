@@ -39,7 +39,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.txtFounder = new System.Windows.Forms.TextBox();
+            this.txtFinder = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtFoundLocation = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@
             this.guna2GradientPanel2.Controls.Add(this.btnDelete);
             this.guna2GradientPanel2.Controls.Add(this.btnUpdate);
             this.guna2GradientPanel2.Controls.Add(this.btnAdd);
-            this.guna2GradientPanel2.Controls.Add(this.txtFounder);
+            this.guna2GradientPanel2.Controls.Add(this.txtFinder);
             this.guna2GradientPanel2.Controls.Add(this.label8);
             this.guna2GradientPanel2.Controls.Add(this.txtFoundLocation);
             this.guna2GradientPanel2.Controls.Add(this.label9);
@@ -196,14 +196,14 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // txtFounder
+            // txtFinder
             // 
-            this.txtFounder.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFounder.Location = new System.Drawing.Point(22, 430);
-            this.txtFounder.Multiline = true;
-            this.txtFounder.Name = "txtFounder";
-            this.txtFounder.Size = new System.Drawing.Size(299, 34);
-            this.txtFounder.TabIndex = 44;
+            this.txtFinder.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFinder.Location = new System.Drawing.Point(22, 430);
+            this.txtFinder.Multiline = true;
+            this.txtFinder.Name = "txtFinder";
+            this.txtFinder.Size = new System.Drawing.Size(299, 34);
+            this.txtFinder.TabIndex = 44;
             // 
             // label8
             // 
@@ -213,9 +213,9 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(18, 403);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 24);
+            this.label8.Size = new System.Drawing.Size(55, 24);
             this.label8.TabIndex = 43;
-            this.label8.Text = "Founder";
+            this.label8.Text = "Finder";
             // 
             // txtFoundLocation
             // 
@@ -376,7 +376,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.TextBox txtFounder;
+        private System.Windows.Forms.TextBox txtFinder;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtFoundLocation;
         private System.Windows.Forms.Label label9;

@@ -42,7 +42,6 @@ namespace FINAL_MINSUFINDER.User_Controls
 
                         dgvFoundItems.DataSource = dt;
 
-                        // Hide the automatically generated ID
                         dgvFoundItems.Columns["FoundItemID"].Visible = false;
                     }
                 }
@@ -53,33 +52,12 @@ namespace FINAL_MINSUFINDER.User_Controls
             }
         }
 
-        // FORM LOAD
-        private void FoundItemsUC_Load(object sender, EventArgs e)
-        {
-            LoadFoundItems();
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAddItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtFoundName.Text) ||
                string.IsNullOrWhiteSpace(txtFoundDescription.Text) ||
                string.IsNullOrWhiteSpace(txtFoundLocation.Text) ||
-               string.IsNullOrWhiteSpace(txtFounder.Text) ||
+               string.IsNullOrWhiteSpace(txtFinder.Text) ||
                string.IsNullOrWhiteSpace(cmbStatus.Text))
             {
                 MessageBox.Show("Please complete all fields.");
@@ -109,7 +87,6 @@ namespace FINAL_MINSUFINDER.User_Controls
                         cmd.Parameters.AddWithValue("@ItemDescription",
                             txtFoundDescription.Text.Trim());
 
-                        // Use the DateTimePicker's selected value instead of DateTime.Now
                         cmd.Parameters.AddWithValue("@DateFound",
                             dtpFoundDate.Value);
 
@@ -117,7 +94,7 @@ namespace FINAL_MINSUFINDER.User_Controls
                             txtFoundLocation.Text.Trim());
 
                         cmd.Parameters.AddWithValue("@Founder",
-                            txtFounder.Text.Trim());
+                            txtFinder.Text.Trim());
 
                         cmd.Parameters.AddWithValue("@Status",
                             cmbStatus.Text);
@@ -142,11 +119,10 @@ namespace FINAL_MINSUFINDER.User_Controls
             txtFoundName.Clear();
             txtFoundDescription.Clear();
 
-            // Reset DateTimePicker back to current date/time on clear
             dtpFoundDate.Value = DateTime.Now;
 
             txtFoundLocation.Clear();
-            txtFounder.Clear();
+            txtFinder.Clear();
 
             cmbStatus.SelectedIndex = -1;
 
@@ -233,7 +209,7 @@ namespace FINAL_MINSUFINDER.User_Controls
                 }
 
                 txtFoundLocation.Text = Convert.ToString(row.Cells["FoundLocation"].Value);
-                txtFounder.Text = Convert.ToString(row.Cells["Founder"].Value);
+                txtFinder.Text = Convert.ToString(row.Cells["Founder"].Value);
                 cmbStatus.Text = Convert.ToString(row.Cells["Status"].Value);
             }
         }
@@ -249,16 +225,15 @@ namespace FINAL_MINSUFINDER.User_Controls
             if (string.IsNullOrWhiteSpace(txtFoundName.Text) ||
                 string.IsNullOrWhiteSpace(txtFoundDescription.Text) ||
                 string.IsNullOrWhiteSpace(txtFoundLocation.Text) ||
-                string.IsNullOrWhiteSpace(txtFounder.Text) ||
+                string.IsNullOrWhiteSpace(txtFinder.Text) ||
                 string.IsNullOrWhiteSpace(cmbStatus.Text))
             {
                 MessageBox.Show("Please complete all fields.");
                 return;
             }
 
-            DialogResult result = MessageBox.Show(
-                "Are you sure you want to update this found item?",
-                "Confirm Update",
+            DialogResult result = MessageBox.Show( "Are you sure you want " +
+                "to update this found item?", "Confirm Update",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
@@ -272,8 +247,6 @@ namespace FINAL_MINSUFINDER.User_Controls
                     using (SqlConnection con = db.GetConnection())
                     {
                         con.Open();
-
-                        // Added DateFound = @DateFound so updates can change the date as well
                         string query = @"UPDATE FoundItems
                                         SET ItemName = @ItemName,
                                             ItemDescription = @Description,
@@ -285,26 +258,13 @@ namespace FINAL_MINSUFINDER.User_Controls
 
                         using (SqlCommand cmd = new SqlCommand(query, con))
                         {
-                            cmd.Parameters.AddWithValue("@ItemName",
-                                txtFoundName.Text.Trim());
-
-                            cmd.Parameters.AddWithValue("@Description",
-                                txtFoundDescription.Text.Trim());
-
-                            cmd.Parameters.AddWithValue("@DateFound",
-                                dtpFoundDate.Value);
-
-                            cmd.Parameters.AddWithValue("@Location",
-                                txtFoundLocation.Text.Trim());
-
-                            cmd.Parameters.AddWithValue("@Founder",
-                                txtFounder.Text.Trim());
-
-                            cmd.Parameters.AddWithValue("@Status",
-                                cmbStatus.Text);
-
-                            cmd.Parameters.AddWithValue("@ID",
-                                selectedFoundItemID);
+                            cmd.Parameters.AddWithValue("@ItemName", txtFoundName.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Description", txtFoundDescription.Text.Trim());
+                            cmd.Parameters.AddWithValue("@DateFound", dtpFoundDate.Value);
+                            cmd.Parameters.AddWithValue("@Location", txtFoundLocation.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Founder", txtFinder.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Status", cmbStatus.Text);
+                            cmd.Parameters.AddWithValue("@ID", selectedFoundItemID);
 
                             int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -334,13 +294,14 @@ namespace FINAL_MINSUFINDER.User_Controls
 
             if (selectedFoundItemID == -1)
             {
-                MessageBox.Show("Please select an item from the Found Items list to claim.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select an item from the Found Items list to claim.",
+                                "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             
             string itemName = txtFoundName.Text.Trim();
-            string founder = txtFounder.Text.Trim();
+            string founder = txtFinder.Text.Trim();
 
             ClaimForm claimForm = new ClaimForm(itemName, founder);
             claimForm.ShowDialog();
@@ -354,17 +315,20 @@ namespace FINAL_MINSUFINDER.User_Controls
 
                 if (string.IsNullOrEmpty(searchValue))
                 {
-                    dt.DefaultView.RowFilter = string.Empty; // Ipakita ang lahat kung walang laman
+                    dt.DefaultView.RowFilter = string.Empty; 
                 }
                 else
                 {
-                    // Awtomatikong maghahanap sa Item Name, Description, Location, at Founder nang sabay-sabay
-                    dt.DefaultView.RowFilter = string.Format(
-                        "ItemName LIKE '%{0}%' OR ItemDescription LIKE '%{0}%' OR FoundLocation LIKE '%{0}%' OR Founder LIKE '%{0}%'",
-                        searchValue
-                    );
+                    dt.DefaultView.RowFilter = string.Format( "ItemName LIKE '%{0}%' OR" +
+                        " ItemDescription LIKE '%{0}%' OR " + "FoundLocation LIKE '%{0}%' OR Founder LIKE '%{0}%'",
+                        searchValue);
                 }
             }
+        }
+
+        private void FoundItemsUC_Load(object sender, EventArgs e)
+        {
+            LoadFoundItems();
         }
     }
 }

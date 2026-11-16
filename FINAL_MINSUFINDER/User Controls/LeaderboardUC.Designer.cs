@@ -136,9 +136,9 @@
             // 
             this.lblTopName.BackColor = System.Drawing.Color.Transparent;
             this.lblTopName.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTopName.Location = new System.Drawing.Point(748, 497);
+            this.lblTopName.Location = new System.Drawing.Point(688, 498);
             this.lblTopName.Name = "lblTopName";
-            this.lblTopName.Size = new System.Drawing.Size(210, 27);
+            this.lblTopName.Size = new System.Drawing.Size(324, 27);
             this.lblTopName.TabIndex = 23;
             this.lblTopName.Text = "Juan Dela Cruz";
             this.lblTopName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

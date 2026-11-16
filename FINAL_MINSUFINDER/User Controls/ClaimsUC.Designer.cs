@@ -85,6 +85,7 @@
             this.dgvClaims.RowTemplate.Height = 24;
             this.dgvClaims.Size = new System.Drawing.Size(979, 443);
             this.dgvClaims.TabIndex = 35;
+            this.dgvClaims.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClaims_CellContentClick);
             // 
             // ClaimsUC
             // 
