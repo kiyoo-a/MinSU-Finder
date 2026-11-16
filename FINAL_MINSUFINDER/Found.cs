@@ -17,26 +17,21 @@ namespace FINAL_MINSUFINDER
         public string ItemDescription { get; set; }
         public DateTime DateFound { get; set; }
         public string FoundLocation { get; set; }
-        public int LostItemID { get; set; }
+        public int LostItemID { get; set; } = -1;
         public string Status { get; set; }
+
         public Found()
         {
             InitializeComponent();
         }
 
-
-
-        public void clearFields()
+        private void Found_Load(object sender, EventArgs e)
         {
-            txtFoundName.Clear();
-            txtFoundDescription.Clear();
-            txtFoundLocation.Clear();
-            txtFinder.Clear();
-            dtpFoundDate.Value = DateTime.Now;
-        }
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            clearFields();
+            txtFoundName.Text = ItemName;
+            txtFoundDescription.Text = ItemDescription;
+            dtpFoundDate.Value = (DateFound > dtpFoundDate.MinDate) ? DateFound : DateTime.Now;
+            txtFoundLocation.Text = FoundLocation;
+            cmbStatus.Text = Status;
         }
 
         private void btnSubmit_Click_1(object sender, EventArgs e)
@@ -44,66 +39,32 @@ namespace FINAL_MINSUFINDER
             if (string.IsNullOrWhiteSpace(txtFoundName.Text) || string.IsNullOrWhiteSpace(txtFoundDescription.Text) ||
                 string.IsNullOrWhiteSpace(txtFoundLocation.Text) || string.IsNullOrWhiteSpace(txtFinder.Text))
             {
-                MessageBox.Show("Please complete all fields.");
+                MessageBox.Show("Please complete all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            try
+            if (UserDatabaseHelper.AddFoundItem(txtFoundName.Text.Trim(), txtFoundDescription.Text.Trim(),
+                dtpFoundDate.Value, txtFoundLocation.Text.Trim(), txtFinder.Text.Trim(),"Unclaimed", LostItemID))
             {
-                DatabaseConnection db = new DatabaseConnection();
-
-                using (SqlConnection con = db.GetConnection())
-                {
-                    con.Open();
-
-                    string insertQuery = @"INSERT INTO FoundItems (ItemName, ItemDescription, DateFound, FoundLocation, Founder, Status)
-                                           VALUES (@ItemName, @ItemDescription, @DateFound, @FoundLocation, @Founder, 'Unclaimed')";
-
-                    using (SqlCommand cmd = new SqlCommand(insertQuery, con))
-                    {
-                        cmd.Parameters.AddWithValue("@ItemName", txtFoundName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@ItemDescription", txtFoundDescription.Text.Trim());
-                        cmd.Parameters.AddWithValue("@DateFound", dtpFoundDate.Value);
-                        cmd.Parameters.AddWithValue("@FoundLocation", txtFoundLocation.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Founder", txtFinder.Text.Trim());
-
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    if (LostItemID != -1)
-                    {
-                        string updateQuery = "UPDATE LostItems SET Status = 'Found' WHERE LostItemID = @ID";
-                        using (SqlCommand cmdUpdate = new SqlCommand(updateQuery, con))
-                        {
-                            cmdUpdate.Parameters.AddWithValue("@ID", LostItemID);
-                            cmdUpdate.ExecuteNonQuery();
-                        }
-                    }
-                }
-
-                MessageBox.Show("Found item added and status updated successfully!");
-
-                clearFields();
+                MessageBox.Show("Found item added and status updated successfully!", "Success", 
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearFields();
+                this.Close();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error adding found item: " + ex.Message);
-            }
-            this.Hide();
-        }
-        private void Found_Load(object sender, EventArgs e)
-        {
-            txtFoundName.Text = ItemName;         
-            txtFoundDescription.Text = ItemDescription; 
-            dtpFoundDate.Value = DateFound;    
-            txtFoundLocation.Text = FoundLocation;
-            cmbStatus.Text = Status;   
         }
 
-        private void txtFoundDescription_TextChanged(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
+            ClearFields();
+        }
 
+        public void ClearFields()
+        {
+            txtFoundName.Clear();
+            txtFoundDescription.Clear();
+            txtFoundLocation.Clear();
+            txtFinder.Clear();
+            dtpFoundDate.Value = DateTime.Now;
         }
     }
-    
 }

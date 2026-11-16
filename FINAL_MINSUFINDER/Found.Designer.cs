@@ -195,7 +195,6 @@
             this.txtFoundDescription.Name = "txtFoundDescription";
             this.txtFoundDescription.Size = new System.Drawing.Size(299, 89);
             this.txtFoundDescription.TabIndex = 36;
-            this.txtFoundDescription.TextChanged += new System.EventHandler(this.txtFoundDescription_TextChanged);
             // 
             // txtFoundName
             // 

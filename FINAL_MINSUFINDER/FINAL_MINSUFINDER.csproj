@@ -143,6 +143,7 @@
     <Compile Include="User Controls\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserDatabaseHelper.cs" />
     <EmbeddedResource Include="ClaimForm.resx">
       <DependentUpon>ClaimForm.cs</DependentUpon>
     </EmbeddedResource>

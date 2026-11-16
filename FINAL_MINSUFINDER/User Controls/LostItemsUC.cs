@@ -1,13 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FINAL_MINSUFINDER.User_Controls
@@ -23,37 +16,7 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         private void LoadLostItems()
         {
-            try
-            {
-                DatabaseConnection db = new DatabaseConnection();
-
-                using (SqlConnection con = db.GetConnection())
-                {
-                    con.Open();
-
-                    string query = @"SELECT LostItemID, ItemName,
-                                     ItemDescription, DateLost,
-                                     LastLocation, ItemOwner, Status
-                                     FROM LostItems";
-
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
-                    {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-
-                        dgvLostItems.DataSource = dt;
-
-                        if (dgvLostItems.Columns["LostItemID"] != null)
-                        {
-                            dgvLostItems.Columns["LostItemID"].Visible = false;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading lost items: " + ex.Message);
-            }
+            UserDatabaseHelper.LoadLostItems(dgvLostItems);
         }
 
         private void LostItemsUC_Load(object sender, EventArgs e)
@@ -61,63 +24,26 @@ namespace FINAL_MINSUFINDER.User_Controls
             LoadLostItems();
         }
 
+        // ADD BUTTON
         private void button6_Click(object sender, EventArgs e)
         {
-    string itemStatus = cmbStatus.Text.Trim();
-
-    if (string.IsNullOrEmpty(itemStatus))
-    {
-        itemStatus = "Lost";
-    }
-
-    if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
-       string.IsNullOrWhiteSpace(txtLostDescription.Text) ||
-       string.IsNullOrWhiteSpace(txtLostLocation.Text) ||
-       string.IsNullOrWhiteSpace(txtOwner.Text))
-    {
-        MessageBox.Show("Please complete all required fields.");
-        return;
-    }
-
-    try
-    {
-        DatabaseConnection db = new DatabaseConnection();
-
-        using (SqlConnection con = db.GetConnection())
-        {
-            con.Open();
-
-            string query = @"INSERT INTO LostItems 
-                            (ItemName, ItemDescription, DateLost, LastLocation, ItemOwner, Status) 
-                            VALUES 
-                            (@ItemName, @ItemDescription, @DateLost, @LastLocation, @ItemOwner, @Status)";
-
-            using (SqlCommand cmd = new SqlCommand(query, con))
+            if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
+                string.IsNullOrWhiteSpace(txtLostDescription.Text) ||
+                string.IsNullOrWhiteSpace(txtLostLocation.Text) ||
+                string.IsNullOrWhiteSpace(txtOwner.Text))
             {
-                cmd.Parameters.AddWithValue("@ItemName", txtLostName.Text.Trim());
-                cmd.Parameters.AddWithValue("@ItemDescription", txtLostDescription.Text.Trim());
-                cmd.Parameters.AddWithValue("@DateLost", dtpLostDate.Value);
-                cmd.Parameters.AddWithValue("@LastLocation", txtLostLocation.Text.Trim());
-                cmd.Parameters.AddWithValue("@ItemOwner", txtOwner.Text.Trim());
-                
-                // Gamitin ang ating nasuring variable na may default na "Lost"
-                cmd.Parameters.AddWithValue("@Status", itemStatus);
+                MessageBox.Show("Please complete all required fields.");
+                return;
+            }
 
-                cmd.ExecuteNonQuery();
+            if (UserDatabaseHelper.AddLostItem(txtLostName.Text, txtLostDescription.Text, dtpLostDate.Value, txtLostLocation.Text, txtOwner.Text, cmbStatus.Text))
+            {
+                MessageBox.Show("Lost item added successfully!");
+                LoadLostItems();
+                ClearFields();
             }
         }
 
-        MessageBox.Show("Lost item added successfully!");
-
-        LoadLostItems(); 
-        ClearFields();
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Error adding lost item: " + ex.Message);
-    }
-        }
-        
         private void ClearFields()
         {
             txtLostName.Clear();
@@ -135,7 +61,47 @@ namespace FINAL_MINSUFINDER.User_Controls
             ClearFields();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        // UPDATE LOGIC (Parehong nakakabit sa btnUpdate_Click at btnUpdate_Click_1 para siguradong gagana)
+        private void UpdateProcess()
+        {
+            if (selectedLostItemID == -1)
+            {
+                MessageBox.Show("Please select a lost item from the table first.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
+                string.IsNullOrWhiteSpace(txtLostDescription.Text) ||
+                string.IsNullOrWhiteSpace(txtLostLocation.Text) ||
+                string.IsNullOrWhiteSpace(txtOwner.Text))
+            {
+                MessageBox.Show("Please complete all fields.");
+                return;
+            }
+
+            if (MessageBox.Show("Are you sure you want to update this lost item?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (UserDatabaseHelper.UpdateLostItem(selectedLostItemID, txtLostName.Text, txtLostDescription.Text, dtpLostDate.Value, txtLostLocation.Text, txtOwner.Text, cmbStatus.Text))
+                {
+                    MessageBox.Show("Lost item updated successfully!");
+                    LoadLostItems(); // I-refresh ang table!
+                    ClearFields();
+                }
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateProcess();
+        }
+
+        private void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+            UpdateProcess();
+        }
+
+        // DELETE LOGIC
+        private void DeleteProcess()
         {
             if (selectedLostItemID == -1)
             {
@@ -143,52 +109,29 @@ namespace FINAL_MINSUFINDER.User_Controls
                 return;
             }
 
-            DialogResult result = MessageBox.Show(
-                "Are you sure you want to delete this lost item?",
-                "Confirm Delete",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (result == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to delete this lost item?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                try
+                if (UserDatabaseHelper.DeleteLostItem(selectedLostItemID))
                 {
-                    DatabaseConnection db = new DatabaseConnection();
-
-                    using (SqlConnection con = db.GetConnection())
-                    {
-                        con.Open();
-
-                        string query = @"DELETE FROM LostItems WHERE LostItemID = @ID";
-
-                        using (SqlCommand cmd = new SqlCommand(query, con))
-                        {
-                            cmd.Parameters.AddWithValue("@ID", selectedLostItemID);
-
-                            int rowsAffected = cmd.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Lost item deleted successfully!");
-                                LoadLostItems();
-                                ClearFields();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Lost item not found.");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error deleting lost item: " + ex.Message);
+                    MessageBox.Show("Lost item deleted successfully!");
+                    LoadLostItems(); // I-refresh ang table!
+                    ClearFields();
                 }
             }
         }
 
-        private void dgvLostItems_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteProcess();
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            DeleteProcess();
+        }
+
+        // CELL CLICK LOGIC
+        private void SelectRow(DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -198,7 +141,6 @@ namespace FINAL_MINSUFINDER.User_Controls
                     return;
 
                 selectedLostItemID = Convert.ToInt32(row.Cells["LostItemID"].Value);
-
                 txtLostName.Text = Convert.ToString(row.Cells["ItemName"].Value);
                 txtLostDescription.Text = Convert.ToString(row.Cells["ItemDescription"].Value);
 
@@ -213,205 +155,17 @@ namespace FINAL_MINSUFINDER.User_Controls
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void dgvLostItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (selectedLostItemID == -1)
-            {
-                MessageBox.Show("Please select a lost item to update.");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
-                string.IsNullOrWhiteSpace(txtLostDescription.Text) ||
-                string.IsNullOrWhiteSpace(txtLostLocation.Text) ||
-                string.IsNullOrWhiteSpace(txtOwner.Text))
-            {
-                MessageBox.Show("Please complete all fields.");
-                return;
-            }
-
-            DialogResult result = MessageBox.Show(
-                "Are you sure you want to update this lost item?",
-                "Confirm Update",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    DatabaseConnection db = new DatabaseConnection();
-
-                    using (SqlConnection con = db.GetConnection())
-                    {
-                        con.Open();
-
-                        string query = @"UPDATE LostItems
-                                        SET ItemName = @ItemName,
-                                            ItemDescription = @Description,
-                                            DateLost = @DateLost,
-                                            LastLocation = @Location,
-                                            ItemOwner = @Owner,
-                                            Status = @Status
-                                        WHERE LostItemID = @ID";
-
-                        using (SqlCommand cmd = new SqlCommand(query, con))
-                        {
-                            cmd.Parameters.AddWithValue("@ItemName", txtLostName.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Description", txtLostDescription.Text.Trim());
-                            cmd.Parameters.AddWithValue("@DateLost", dtpLostDate.Value);
-                            cmd.Parameters.AddWithValue("@Location", txtLostLocation.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Owner", txtOwner.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Status", cmbStatus.Text);
-                            cmd.Parameters.AddWithValue("@ID", selectedLostItemID);
-
-                            int rowsAffected = cmd.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Lost item updated successfully!");
-                                LoadLostItems();
-                                ClearFields();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Lost item not found.");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error updating lost item: " + ex.Message);
-                }
-            }
+            SelectRow(e);
         }
 
-        private void btnDelete_Click_1(object sender, EventArgs e)
+        private void dgvLostItems_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (selectedLostItemID == -1)
-            {
-                MessageBox.Show("Please select a lost item to delete.");
-                return;
-            }
-
-            DialogResult result = MessageBox.Show(
-                "Are you sure you want to delete this lost item?",
-                "Confirm Delete",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    DatabaseConnection db = new DatabaseConnection();
-
-                    using (SqlConnection con = db.GetConnection())
-                    {
-                        con.Open();
-
-                        string query = @"DELETE FROM LostItems WHERE LostItemID = @ID";
-
-                        using (SqlCommand cmd = new SqlCommand(query, con))
-                        {
-                            cmd.Parameters.AddWithValue("@ID", selectedLostItemID);
-
-                            int rowsAffected = cmd.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Lost item deleted successfully!");
-                                LoadLostItems();
-                                ClearFields();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Lost item not found.");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error deleting lost item: " + ex.Message);
-                }
-            }
+            SelectRow(e);
         }
 
-        private void btnUpdate_Click_1(object sender, EventArgs e)
-        {
-            if (selectedLostItemID == -1)
-            {
-                MessageBox.Show("Please select a lost item to update.");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtLostName.Text) ||
-                string.IsNullOrWhiteSpace(txtLostDescription.Text) ||
-                string.IsNullOrWhiteSpace(txtLostLocation.Text) ||
-                string.IsNullOrWhiteSpace(txtOwner.Text))
-            {
-                MessageBox.Show("Please complete all fields.");
-                return;
-            }
-
-            DialogResult result = MessageBox.Show(
-                "Are you sure you want to update this lost item?",
-                "Confirm Update",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    DatabaseConnection db = new DatabaseConnection();
-
-                    using (SqlConnection con = db.GetConnection())
-                    {
-                        con.Open();
-
-                        string query = @"UPDATE LostItems SET ItemName = @ItemName, ItemDescription = @Description,
-                                         DateLost = @DateLost, LastLocation = @Location, ItemOwner = @Owner,
-                                         Status = @Status WHERE LostItemID = @ID";
-
-                        using (SqlCommand cmd = new SqlCommand(query, con))
-                        {
-                            cmd.Parameters.AddWithValue("@ItemName", txtLostName.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Description", txtLostDescription.Text.Trim());
-                            cmd.Parameters.AddWithValue("@DateLost", dtpLostDate.Value);
-                            cmd.Parameters.AddWithValue("@Location", txtLostLocation.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Owner", txtOwner.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Status", cmbStatus.Text);
-                            cmd.Parameters.AddWithValue("@ID", selectedLostItemID);
-
-                            int rowsAffected = cmd.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Lost item updated successfully!");
-                                LoadLostItems();
-                                ClearFields();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Lost item not found.");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error updating lost item: " + ex.Message);
-                }
-            }
-        }
-
-
+        // MARK AS FOUND BUTTON
         private void btnClear_Click_1(object sender, EventArgs e)
         {
             if (selectedLostItemID == -1)
@@ -419,15 +173,13 @@ namespace FINAL_MINSUFINDER.User_Controls
                 MessageBox.Show("Please select an item from the Lost Items list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            Found found = new Found();
 
+            Found found = new Found();
             found.ItemName = txtLostName.Text.Trim();
             found.ItemDescription = txtLostDescription.Text.Trim();
             found.DateFound = dtpLostDate.Value;
             found.FoundLocation = txtLostLocation.Text.Trim();
-
             found.Status = "Found";
-
             found.LostItemID = selectedLostItemID;
 
             found.ShowDialog();
@@ -438,36 +190,9 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         private void dgvLostItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
         }
 
-        private void dgvLostItems_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0)
-                return;
-
-            DataGridViewRow row = dgvLostItems.Rows[e.RowIndex];
-
-            if (row.Cells["LostItemID"].Value == null || row.Cells["LostItemID"].Value == DBNull.Value)
-                return;
-
-            selectedLostItemID = Convert.ToInt32(row.Cells["LostItemID"].Value);
-
-            txtLostName.Text = Convert.ToString(row.Cells["ItemName"].Value);
-
-            txtLostDescription.Text = Convert.ToString(row.Cells["ItemDescription"].Value);
-
-            if (row.Cells["DateLost"].Value != DBNull.Value)
-            {
-                dtpLostDate.Value = Convert.ToDateTime(row.Cells["DateLost"].Value);
-            }
-            txtLostLocation.Text = Convert.ToString(row.Cells["LastLocation"].Value);
-
-            txtOwner.Text = Convert.ToString(row.Cells["ItemOwner"].Value);
-
-            cmbStatus.Text = Convert.ToString(row.Cells["Status"].Value);
-        }
-
+        // SEARCH BAR
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (dgvLostItems.DataSource is DataTable dt)
@@ -476,15 +201,14 @@ namespace FINAL_MINSUFINDER.User_Controls
 
                 if (string.IsNullOrEmpty(searchValue))
                 {
-                    dt.DefaultView.RowFilter = string.Empty; 
+                    dt.DefaultView.RowFilter = string.Empty;
                 }
                 else
                 {
                     dt.DefaultView.RowFilter = string.Format(
-                        "ItemName LIKE '%{0}%' OR ItemDescription LIKE '%{0}%' OR LastLocation " +
-                        "LIKE '%{0}%' OR ItemOwner LIKE '%{0}%'", searchValue);
+                        "ItemName LIKE '%{0}%' OR ItemDescription LIKE '%{0}%' OR LastLocation LIKE '%{0}%' OR ItemOwner LIKE '%{0}%'", searchValue);
                 }
-            }   
+            }
         }
     }
 }

@@ -36,75 +36,35 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         private void LoadLeaderboard(string filterType)
         {
-            try
-            {
-                DatabaseConnection db = new DatabaseConnection();
+            DataTable dt = UserDatabaseHelper.GetLeaderboard(filterType, out string timeLabel);
+            lblFinderTitle.Text = timeLabel;
 
-                using (SqlConnection con = db.GetConnection())
+            if (dt != null)
+            {
+                dgvLeaderboard.DataSource = dt;
+                dgvLeaderboard.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                if (dt.Rows.Count > 0)
                 {
-                    con.Open();
-
-                    string dateCondition = "";
-                    string timeLabelText = "of the Month"; 
-
-                    filterType = filterType?.Trim();
-
-                    if (filterType == "Today")
-                    {
-                        dateCondition = "WHERE CAST(DateFound AS DATE) = CAST(GETDATE() AS DATE)";
-                        timeLabelText = "of this Day";
-                    }
-                    else if (filterType == "This Week" || filterType == "this Week")
-                    {
-                        dateCondition = "WHERE DateFound >= DATEADD(day, -7, GETDATE())";
-                        timeLabelText = "of this Week";
-                    }
-                    else if (filterType == "This Month" || filterType == "this Month")
-                    {
-                        dateCondition = "WHERE MONTH(DateFound) = MONTH(GETDATE()) AND YEAR(DateFound) = YEAR(GETDATE())";
-                        timeLabelText = "of this Month";
-                    }
-                    else 
-                    {
-                        dateCondition = "";
-                        timeLabelText = "of All Time";
-                    }
-                    lblFinderTitle.Text = timeLabelText;
-
-                    string query = $@" SELECT ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) AS [Rank], 
-                                    LTRIM(RTRIM(Founder)) AS [Student Name], COUNT(*) AS [Items Reported],
-                                    (COUNT(*) * 10) AS [Total Points] FROM FoundItems {dateCondition}
-                                    GROUP BY LTRIM(RTRIM(Founder))HAVING LTRIM(RTRIM(Founder)) IS NOT NULL AND
-                                    LTRIM(RTRIM(Founder)) <> '' ORDER BY [Items Reported] DESC";
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
-                    {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-
-                        dgvLeaderboard.DataSource = dt;
-
-                        if (dt.Rows.Count > 0)
-                        {
-                            lblTopName.Text = dt.Rows[0]["Student Name"].ToString();
-                            lblTopFound.Text = dt.Rows[0]["Items Reported"].ToString() + " Found Items";
-                        }
-                        else
-                        {
-                            lblTopName.Text = " ";
-                            lblTopFound.Text = "0 Found Items";
-                        }
-                    }
+                    lblTopName.Text = dt.Rows[0]["Student Name"].ToString();
+                    lblTopFound.Text = dt.Rows[0]["Items Reported"].ToString() + " Found Items";
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading leaderboard: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    lblTopName.Text = " ";
+                    lblTopFound.Text = "0 Found Items";
+                }
             }
         }
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedFilter = cmbCategory.Text;
             LoadLeaderboard(selectedFilter);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

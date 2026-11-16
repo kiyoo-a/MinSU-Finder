@@ -23,21 +23,9 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         public void LoadClaims()
         {
-            DatabaseConnection db = new DatabaseConnection();
-            using (SqlConnection con = db.GetConnection())
-            {
-                con.Open();
-                string query = @"SELECT ClaimID, OwnerFullName, ClaimantFullName, DateClaimed, ItemName, FinderFullName 
-                 FROM Claims 
-                 ORDER BY ClaimID DESC";
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
-                {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    dgvClaims.DataSource = dt;
-                }
-            }
+            UserDatabaseHelper.LoadClaims(dgvClaims);
         }
+
         private void ClaimsUC_Load(object sender, EventArgs e)
         {
             LoadClaims();
@@ -45,7 +33,25 @@ namespace FINAL_MINSUFINDER.User_Controls
 
         private void dgvClaims_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (dgvClaims.DataSource is DataTable dt)
+            {
+                string searchValue = txtSearch.Text.Trim().Replace("'", "''");
+
+                if (string.IsNullOrEmpty(searchValue))
+                {
+                    dt.DefaultView.RowFilter = string.Empty;
+                }
+                else
+                {
+                    // Pinalitan natin ng tamang column names na meron sa Claims table
+                    dt.DefaultView.RowFilter = string.Format(
+                        "ItemName LIKE '%{0}%' OR OwnerFullName LIKE '%{0}%' OR FinderFullName LIKE '%{0}%' OR ClaimantFullName LIKE '%{0}%'", searchValue);
+                }
+            }
         }
     }
 }

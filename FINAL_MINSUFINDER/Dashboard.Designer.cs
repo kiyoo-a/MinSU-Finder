@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             Guna.Charts.WinForms.GunaDoughnutDataset gunaDoughnutDataset2;
-            Guna.Charts.WinForms.LPoint lPoint1 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint2 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint3 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint4 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint5 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint6 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint7 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint8 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint9 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint10 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint11 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint12 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint13 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint14 = new Guna.Charts.WinForms.LPoint();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnLostItems = new System.Windows.Forms.Button();
             this.btnFoundItems = new System.Windows.Forms.Button();
@@ -50,13 +50,12 @@
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.btnReload = new System.Windows.Forms.Button();
             this.lblClaimCount = new System.Windows.Forms.Label();
             this.lblUserCount = new System.Windows.Forms.Label();
             this.lblLostCount = new System.Windows.Forms.Label();
             this.lblFoundCount = new System.Windows.Forms.Label();
             this.dgvRecentActivities = new System.Windows.Forms.DataGridView();
-            this.btnReload = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
             gunaDoughnutDataset2 = new Guna.Charts.WinForms.GunaDoughnutDataset();
             this.guna2GradientPanel1.SuspendLayout();
             this.pnlContent.SuspendLayout();
@@ -65,13 +64,13 @@
             // 
             // gunaDoughnutDataset2
             // 
-            lPoint1.Label = "2342";
-            lPoint1.Y = 0D;
-            lPoint2.Label = "324";
-            lPoint2.Y = 0D;
+            lPoint8.Label = "2342";
+            lPoint8.Y = 0D;
+            lPoint9.Label = "324";
+            lPoint9.Y = 0D;
             gunaDoughnutDataset2.DataPoints.AddRange(new Guna.Charts.WinForms.LPoint[] {
-            lPoint1,
-            lPoint2});
+            lPoint8,
+            lPoint9});
             gunaDoughnutDataset2.FillColors.AddRange(new System.Drawing.Color[] {
             System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255))))),
@@ -82,7 +81,7 @@
             // 
             this.btnDashboard.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnDashboard.Location = new System.Drawing.Point(28, 219);
+            this.btnDashboard.Location = new System.Drawing.Point(28, 228);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(156, 39);
             this.btnDashboard.TabIndex = 1;
@@ -94,7 +93,7 @@
             // 
             this.btnLostItems.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLostItems.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnLostItems.Location = new System.Drawing.Point(28, 274);
+            this.btnLostItems.Location = new System.Drawing.Point(28, 283);
             this.btnLostItems.Name = "btnLostItems";
             this.btnLostItems.Size = new System.Drawing.Size(156, 39);
             this.btnLostItems.TabIndex = 2;
@@ -106,7 +105,7 @@
             // 
             this.btnFoundItems.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFoundItems.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnFoundItems.Location = new System.Drawing.Point(28, 329);
+            this.btnFoundItems.Location = new System.Drawing.Point(28, 338);
             this.btnFoundItems.Name = "btnFoundItems";
             this.btnFoundItems.Size = new System.Drawing.Size(156, 39);
             this.btnFoundItems.TabIndex = 3;
@@ -118,7 +117,7 @@
             // 
             this.btnLeaderboard.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLeaderboard.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnLeaderboard.Location = new System.Drawing.Point(28, 436);
+            this.btnLeaderboard.Location = new System.Drawing.Point(28, 445);
             this.btnLeaderboard.Name = "btnLeaderboard";
             this.btnLeaderboard.Size = new System.Drawing.Size(156, 39);
             this.btnLeaderboard.TabIndex = 5;
@@ -130,7 +129,7 @@
             // 
             this.btnClaims.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClaims.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnClaims.Location = new System.Drawing.Point(28, 384);
+            this.btnClaims.Location = new System.Drawing.Point(28, 393);
             this.btnClaims.Name = "btnClaims";
             this.btnClaims.Size = new System.Drawing.Size(156, 39);
             this.btnClaims.TabIndex = 7;
@@ -155,7 +154,7 @@
             // 
             this.btnUsers.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsers.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnUsers.Location = new System.Drawing.Point(28, 491);
+            this.btnUsers.Location = new System.Drawing.Point(28, 500);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Size = new System.Drawing.Size(156, 39);
             this.btnUsers.TabIndex = 9;
@@ -171,20 +170,20 @@
             System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(33)))))});
-            lPoint3.Y = 0D;
-            lPoint4.Label = "32";
-            lPoint4.Y = 0D;
-            lPoint5.Label = "323";
-            lPoint5.Y = 0D;
-            lPoint6.Label = "3425";
-            lPoint6.Y = 0D;
-            lPoint7.Y = 0D;
+            lPoint10.Y = 0D;
+            lPoint11.Label = "32";
+            lPoint11.Y = 0D;
+            lPoint12.Label = "323";
+            lPoint12.Y = 0D;
+            lPoint13.Label = "3425";
+            lPoint13.Y = 0D;
+            lPoint14.Y = 0D;
             this.gunaDoughnutDataset1.DataPoints.AddRange(new Guna.Charts.WinForms.LPoint[] {
-            lPoint3,
-            lPoint4,
-            lPoint5,
-            lPoint6,
-            lPoint7});
+            lPoint10,
+            lPoint11,
+            lPoint12,
+            lPoint13,
+            lPoint14});
             this.gunaDoughnutDataset1.FillColors.AddRange(new System.Drawing.Color[] {
             System.Drawing.Color.Empty,
             System.Drawing.Color.Empty,
@@ -209,24 +208,22 @@
             this.guna2GradientPanel1.Controls.Add(this.btnFoundItems);
             this.guna2GradientPanel1.Controls.Add(this.btnLeaderboard);
             this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(74)))), ((int)(((byte)(39)))));
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(74)))), ((int)(((byte)(39)))));
+            this.guna2GradientPanel1.FillColor = System.Drawing.Color.White;
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.White;
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(214, 701);
             this.guna2GradientPanel1.TabIndex = 22;
-            this.guna2GradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel1_Paint);
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Panel1.BackgroundImage")));
             this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2Panel1.Location = new System.Drawing.Point(12, 7);
+            this.guna2Panel1.Location = new System.Drawing.Point(20, 7);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(185, 206);
+            this.guna2Panel1.Size = new System.Drawing.Size(164, 206);
             this.guna2Panel1.TabIndex = 25;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // pnlContent
             // 
@@ -236,7 +233,6 @@
             this.pnlContent.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlContent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlContent.BackgroundImage")));
             this.pnlContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlContent.Controls.Add(this.label13);
             this.pnlContent.Controls.Add(this.btnReload);
             this.pnlContent.Controls.Add(this.lblClaimCount);
             this.pnlContent.Controls.Add(this.lblUserCount);
@@ -247,14 +243,27 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1038, 702);
             this.pnlContent.TabIndex = 6;
-            this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
+            // 
+            // btnReload
+            // 
+            this.btnReload.BackColor = System.Drawing.Color.White;
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReload.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnReload.Location = new System.Drawing.Point(783, 251);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(195, 31);
+            this.btnReload.TabIndex = 49;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // lblClaimCount
             // 
             this.lblClaimCount.AutoSize = true;
             this.lblClaimCount.BackColor = System.Drawing.Color.Transparent;
             this.lblClaimCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaimCount.Location = new System.Drawing.Point(622, 167);
+            this.lblClaimCount.Location = new System.Drawing.Point(758, 149);
             this.lblClaimCount.Name = "lblClaimCount";
             this.lblClaimCount.Size = new System.Drawing.Size(96, 46);
             this.lblClaimCount.TabIndex = 6;
@@ -265,7 +274,7 @@
             this.lblUserCount.AutoSize = true;
             this.lblUserCount.BackColor = System.Drawing.Color.Transparent;
             this.lblUserCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserCount.Location = new System.Drawing.Point(860, 167);
+            this.lblUserCount.Location = new System.Drawing.Point(930, 149);
             this.lblUserCount.Name = "lblUserCount";
             this.lblUserCount.Size = new System.Drawing.Size(96, 46);
             this.lblUserCount.TabIndex = 6;
@@ -276,7 +285,7 @@
             this.lblLostCount.AutoSize = true;
             this.lblLostCount.BackColor = System.Drawing.Color.Transparent;
             this.lblLostCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLostCount.Location = new System.Drawing.Point(391, 167);
+            this.lblLostCount.Location = new System.Drawing.Point(514, 149);
             this.lblLostCount.Name = "lblLostCount";
             this.lblLostCount.Size = new System.Drawing.Size(96, 46);
             this.lblLostCount.TabIndex = 7;
@@ -287,7 +296,7 @@
             this.lblFoundCount.AutoSize = true;
             this.lblFoundCount.BackColor = System.Drawing.Color.Transparent;
             this.lblFoundCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFoundCount.Location = new System.Drawing.Point(147, 167);
+            this.lblFoundCount.Location = new System.Drawing.Point(274, 149);
             this.lblFoundCount.Name = "lblFoundCount";
             this.lblFoundCount.Size = new System.Drawing.Size(96, 46);
             this.lblFoundCount.TabIndex = 8;
@@ -304,49 +313,22 @@
             this.dgvRecentActivities.BackgroundColor = System.Drawing.Color.White;
             this.dgvRecentActivities.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvRecentActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRecentActivities.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRecentActivities.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRecentActivities.GridColor = System.Drawing.Color.White;
-            this.dgvRecentActivities.Location = new System.Drawing.Point(50, 311);
+            this.dgvRecentActivities.Location = new System.Drawing.Point(36, 288);
             this.dgvRecentActivities.Name = "dgvRecentActivities";
             this.dgvRecentActivities.RowHeadersVisible = false;
             this.dgvRecentActivities.RowHeadersWidth = 51;
             this.dgvRecentActivities.RowTemplate.Height = 24;
             this.dgvRecentActivities.Size = new System.Drawing.Size(942, 378);
             this.dgvRecentActivities.TabIndex = 20;
-            this.dgvRecentActivities.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // btnReload
-            // 
-            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnReload.Location = new System.Drawing.Point(797, 275);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(195, 31);
-            this.btnReload.TabIndex = 49;
-            this.btnReload.Text = "Reload";
-            this.btnReload.UseVisualStyleBackColor = false;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Arial Narrow", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label13.Location = new System.Drawing.Point(28, 265);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(253, 43);
-            this.label13.TabIndex = 50;
-            this.label13.Text = "Recent Acivities";
             // 
             // Dashboard
             // 
@@ -391,6 +373,5 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Button btnReload;
-        private System.Windows.Forms.Label label13;
     }
 }
