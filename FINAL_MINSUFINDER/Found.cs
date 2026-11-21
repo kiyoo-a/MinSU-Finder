@@ -19,6 +19,7 @@ namespace FINAL_MINSUFINDER
         public string FoundLocation { get; set; }
         public int LostItemID { get; set; } = -1;
         public string Status { get; set; }
+        public string ImagePath { get; set; }
 
         public Found()
         {
@@ -44,7 +45,7 @@ namespace FINAL_MINSUFINDER
             }
 
             if (UserDatabaseHelper.AddFoundItem(txtFoundName.Text.Trim(), txtFoundDescription.Text.Trim(),
-                dtpFoundDate.Value, txtFoundLocation.Text.Trim(), txtFinder.Text.Trim(),"Unclaimed", LostItemID))
+                dtpFoundDate.Value, txtFoundLocation.Text.Trim(), txtFinder.Text.Trim(),"Unclaimed", ImagePath, LostItemID))
             {
                 MessageBox.Show("Found item added and status updated successfully!", "Success", 
                 MessageBoxButtons.OK, MessageBoxIcon.Information);

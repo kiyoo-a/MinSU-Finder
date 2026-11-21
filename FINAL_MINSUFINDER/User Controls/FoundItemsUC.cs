@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace FINAL_MINSUFINDER.User_Controls
     public partial class FoundItemsUC : UserControl
     {
         private int selectedFoundItemID = -1;
+        private string selectedImagePath = null; 
 
         public FoundItemsUC()
         {
@@ -34,12 +36,13 @@ namespace FINAL_MINSUFINDER.User_Controls
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtFoundName.Text) ||
-                string.IsNullOrWhiteSpace(txtFoundDescription.Text) ||
-                string.IsNullOrWhiteSpace(txtFoundLocation.Text) ||
-                string.IsNullOrWhiteSpace(txtFinder.Text) ||
-                string.IsNullOrWhiteSpace(cmbStatus.Text))
+        string.IsNullOrWhiteSpace(txtFoundDescription.Text) ||
+        string.IsNullOrWhiteSpace(txtFoundLocation.Text) ||
+        string.IsNullOrWhiteSpace(txtFinder.Text) ||
+        string.IsNullOrWhiteSpace(cmbStatus.Text))
             {
-                MessageBox.Show("Please complete all required fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please complete all required fields.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -49,9 +52,12 @@ namespace FINAL_MINSUFINDER.User_Controls
                 dtpFoundDate.Value,
                 txtFoundLocation.Text.Trim(),
                 txtFinder.Text.Trim(),
-                cmbStatus.Text))
+                cmbStatus.Text,
+                selectedImagePath))
             {
-                MessageBox.Show("Found item added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Found item added successfully!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 LoadFoundItems();
                 ClearFields();
             }
@@ -74,7 +80,8 @@ namespace FINAL_MINSUFINDER.User_Controls
         {
             if (selectedFoundItemID == -1)
             {
-                MessageBox.Show("Please select a found item from the table to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a found item from the table to update.",
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -84,11 +91,13 @@ namespace FINAL_MINSUFINDER.User_Controls
                 string.IsNullOrWhiteSpace(txtFinder.Text) ||
                 string.IsNullOrWhiteSpace(cmbStatus.Text))
             {
-                MessageBox.Show("Please complete all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please complete all fields.",
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (MessageBox.Show("Are you sure you want to update this found item?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to update this found item?",
+                "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (UserDatabaseHelper.UpdateFoundItem(
                     selectedFoundItemID,
@@ -97,9 +106,12 @@ namespace FINAL_MINSUFINDER.User_Controls
                     dtpFoundDate.Value,
                     txtFoundLocation.Text.Trim(),
                     txtFinder.Text.Trim(),
-                    cmbStatus.Text))
+                    cmbStatus.Text,
+                    selectedImagePath)) // ADD THIS
                 {
-                    MessageBox.Show("Found item updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Found item updated successfully!",
+                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     LoadFoundItems();
                     ClearFields();
                 }
@@ -166,6 +178,9 @@ namespace FINAL_MINSUFINDER.User_Controls
                 txtFoundLocation.Text = Convert.ToString(row.Cells["FoundLocation"].Value);
                 txtFinder.Text = Convert.ToString(row.Cells["Founder"].Value);
                 cmbStatus.Text = Convert.ToString(row.Cells["Status"].Value);
+                selectedImagePath = Convert.ToString(row.Cells["ImagePath"].Value);
+
+                DisplayImage(selectedImagePath);
             }
         }
 
@@ -186,6 +201,68 @@ namespace FINAL_MINSUFINDER.User_Controls
                         "ItemName LIKE '%{0}%' OR ItemDescription LIKE '%{0}%' OR FoundLocation LIKE '%{0}%' OR Founder LIKE '%{0}%'",
                         searchValue);
                 }
+            }
+        }
+
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string folderPath = Path.Combine(
+                        Application.StartupPath, "ItemImages");
+
+                    if (!Directory.Exists(folderPath))
+                        Directory.CreateDirectory(folderPath);
+
+                    string fileName = Guid.NewGuid().ToString()
+                        + Path.GetExtension(ofd.FileName);
+
+                    string destinationPath = Path.Combine(folderPath, fileName);
+
+                    File.Copy(ofd.FileName, destinationPath, true);
+
+                    selectedImagePath = Path.Combine("ItemImages", fileName);
+
+                    DisplayImage(selectedImagePath);
+                }
+            }
+        }
+
+        private void DisplayImage(string imagePath)
+        {
+            if (picItem.Image != null)
+            {
+                picItem.Image.Dispose();
+                picItem.Image = null;
+            }
+
+            if (string.IsNullOrEmpty(imagePath))
+                return;
+
+            string fullPath = Path.Combine(
+                Application.StartupPath, imagePath);
+
+            if (File.Exists(fullPath))
+            {
+                using (Image img = Image.FromFile(fullPath))
+                {
+                    picItem.Image = new Bitmap(img);
+                }
+            }
+        }
+
+        private void picItem_Click(object sender, EventArgs e)
+        {
+            if (picItem.Image == null)
+                return;
+
+            using (ImageViewer viewer = new ImageViewer(picItem.Image))
+            {
+                viewer.ShowDialog();
             }
         }
     }

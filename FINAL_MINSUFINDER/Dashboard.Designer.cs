@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             Guna.Charts.WinForms.GunaDoughnutDataset gunaDoughnutDataset2;
-            Guna.Charts.WinForms.LPoint lPoint15 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint16 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint17 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint18 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint19 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint20 = new Guna.Charts.WinForms.LPoint();
-            Guna.Charts.WinForms.LPoint lPoint21 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint22 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint23 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint24 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint25 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint26 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint27 = new Guna.Charts.WinForms.LPoint();
+            Guna.Charts.WinForms.LPoint lPoint28 = new Guna.Charts.WinForms.LPoint();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnLostItems = new System.Windows.Forms.Button();
             this.btnFoundItems = new System.Windows.Forms.Button();
@@ -54,6 +54,13 @@
             this.lblLostCount = new System.Windows.Forms.Label();
             this.lblFoundCount = new System.Windows.Forms.Label();
             this.dgvRecentActivities = new System.Windows.Forms.DataGridView();
+            this.lblTopFinder = new System.Windows.Forms.Label();
+            this.lblTopFinderCount = new System.Windows.Forms.Label();
+            this.btnGenerateReport = new System.Windows.Forms.Button();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             gunaDoughnutDataset2 = new Guna.Charts.WinForms.GunaDoughnutDataset();
             this.guna2GradientPanel1.SuspendLayout();
             this.pnlContent.SuspendLayout();
@@ -62,13 +69,13 @@
             // 
             // gunaDoughnutDataset2
             // 
-            lPoint15.Label = "2342";
-            lPoint15.Y = 0D;
-            lPoint16.Label = "324";
-            lPoint16.Y = 0D;
+            lPoint22.Label = "2342";
+            lPoint22.Y = 0D;
+            lPoint23.Label = "324";
+            lPoint23.Y = 0D;
             gunaDoughnutDataset2.DataPoints.AddRange(new Guna.Charts.WinForms.LPoint[] {
-            lPoint15,
-            lPoint16});
+            lPoint22,
+            lPoint23});
             gunaDoughnutDataset2.FillColors.AddRange(new System.Drawing.Color[] {
             System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255))))),
@@ -156,20 +163,20 @@
             System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(33)))))});
-            lPoint17.Y = 0D;
-            lPoint18.Label = "32";
-            lPoint18.Y = 0D;
-            lPoint19.Label = "323";
-            lPoint19.Y = 0D;
-            lPoint20.Label = "3425";
-            lPoint20.Y = 0D;
-            lPoint21.Y = 0D;
+            lPoint24.Y = 0D;
+            lPoint25.Label = "32";
+            lPoint25.Y = 0D;
+            lPoint26.Label = "323";
+            lPoint26.Y = 0D;
+            lPoint27.Label = "3425";
+            lPoint27.Y = 0D;
+            lPoint28.Y = 0D;
             this.gunaDoughnutDataset1.DataPoints.AddRange(new Guna.Charts.WinForms.LPoint[] {
-            lPoint17,
-            lPoint18,
-            lPoint19,
-            lPoint20,
-            lPoint21});
+            lPoint24,
+            lPoint25,
+            lPoint26,
+            lPoint27,
+            lPoint28});
             this.gunaDoughnutDataset1.FillColors.AddRange(new System.Drawing.Color[] {
             System.Drawing.Color.Empty,
             System.Drawing.Color.Empty,
@@ -218,6 +225,13 @@
             this.pnlContent.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlContent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlContent.BackgroundImage")));
             this.pnlContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlContent.Controls.Add(this.label3);
+            this.pnlContent.Controls.Add(this.label2);
+            this.pnlContent.Controls.Add(this.dtpStartDate);
+            this.pnlContent.Controls.Add(this.dtpEndDate);
+            this.pnlContent.Controls.Add(this.btnGenerateReport);
+            this.pnlContent.Controls.Add(this.lblTopFinderCount);
+            this.pnlContent.Controls.Add(this.lblTopFinder);
             this.pnlContent.Controls.Add(this.btnReload);
             this.pnlContent.Controls.Add(this.lblClaimCount);
             this.pnlContent.Controls.Add(this.lblLostCount);
@@ -231,13 +245,13 @@
             // 
             // btnReload
             // 
-            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(91)))), ((int)(((byte)(51)))));
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Location = new System.Drawing.Point(783, 251);
+            this.btnReload.Location = new System.Drawing.Point(906, 668);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(195, 31);
+            this.btnReload.Size = new System.Drawing.Size(98, 31);
             this.btnReload.TabIndex = 49;
             this.btnReload.Text = "Reload";
             this.btnReload.UseVisualStyleBackColor = false;
@@ -245,36 +259,36 @@
             // 
             // lblClaimCount
             // 
-            this.lblClaimCount.AutoSize = true;
             this.lblClaimCount.BackColor = System.Drawing.Color.Transparent;
-            this.lblClaimCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaimCount.Location = new System.Drawing.Point(758, 149);
+            this.lblClaimCount.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaimCount.Location = new System.Drawing.Point(616, 139);
             this.lblClaimCount.Name = "lblClaimCount";
-            this.lblClaimCount.Size = new System.Drawing.Size(96, 46);
+            this.lblClaimCount.Size = new System.Drawing.Size(132, 60);
             this.lblClaimCount.TabIndex = 6;
             this.lblClaimCount.Text = "(678)";
+            this.lblClaimCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblLostCount
             // 
-            this.lblLostCount.AutoSize = true;
             this.lblLostCount.BackColor = System.Drawing.Color.Transparent;
-            this.lblLostCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLostCount.Location = new System.Drawing.Point(514, 149);
+            this.lblLostCount.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLostCount.Location = new System.Drawing.Point(374, 139);
             this.lblLostCount.Name = "lblLostCount";
-            this.lblLostCount.Size = new System.Drawing.Size(96, 46);
+            this.lblLostCount.Size = new System.Drawing.Size(133, 60);
             this.lblLostCount.TabIndex = 7;
             this.lblLostCount.Text = "(345)";
+            this.lblLostCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblFoundCount
             // 
-            this.lblFoundCount.AutoSize = true;
             this.lblFoundCount.BackColor = System.Drawing.Color.Transparent;
-            this.lblFoundCount.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFoundCount.Location = new System.Drawing.Point(274, 149);
+            this.lblFoundCount.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFoundCount.Location = new System.Drawing.Point(130, 139);
             this.lblFoundCount.Name = "lblFoundCount";
-            this.lblFoundCount.Size = new System.Drawing.Size(96, 46);
+            this.lblFoundCount.Size = new System.Drawing.Size(134, 60);
             this.lblFoundCount.TabIndex = 8;
             this.lblFoundCount.Text = "(012)";
+            this.lblFoundCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvRecentActivities
             // 
@@ -287,22 +301,101 @@
             this.dgvRecentActivities.BackgroundColor = System.Drawing.Color.White;
             this.dgvRecentActivities.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvRecentActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRecentActivities.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRecentActivities.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRecentActivities.GridColor = System.Drawing.Color.White;
-            this.dgvRecentActivities.Location = new System.Drawing.Point(36, 288);
+            this.dgvRecentActivities.Location = new System.Drawing.Point(38, 283);
             this.dgvRecentActivities.Name = "dgvRecentActivities";
             this.dgvRecentActivities.RowHeadersVisible = false;
             this.dgvRecentActivities.RowHeadersWidth = 51;
             this.dgvRecentActivities.RowTemplate.Height = 24;
-            this.dgvRecentActivities.Size = new System.Drawing.Size(942, 378);
+            this.dgvRecentActivities.Size = new System.Drawing.Size(966, 383);
             this.dgvRecentActivities.TabIndex = 20;
+            // 
+            // lblTopFinder
+            // 
+            this.lblTopFinder.BackColor = System.Drawing.Color.Transparent;
+            this.lblTopFinder.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTopFinder.Location = new System.Drawing.Point(827, 148);
+            this.lblTopFinder.Name = "lblTopFinder";
+            this.lblTopFinder.Size = new System.Drawing.Size(155, 20);
+            this.lblTopFinder.TabIndex = 50;
+            this.lblTopFinder.Text = "Mark Clarence Jimenez";
+            this.lblTopFinder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTopFinderCount
+            // 
+            this.lblTopFinderCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblTopFinderCount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTopFinderCount.Location = new System.Drawing.Point(849, 168);
+            this.lblTopFinderCount.Name = "lblTopFinderCount";
+            this.lblTopFinderCount.Size = new System.Drawing.Size(112, 16);
+            this.lblTopFinderCount.TabIndex = 51;
+            this.lblTopFinderCount.Text = "3 Items Reported";
+            this.lblTopFinderCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(91)))), ((int)(((byte)(51)))));
+            this.btnGenerateReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerateReport.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateReport.ForeColor = System.Drawing.Color.White;
+            this.btnGenerateReport.Location = new System.Drawing.Point(798, 667);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(105, 31);
+            this.btnGenerateReport.TabIndex = 52;
+            this.btnGenerateReport.Text = "Print";
+            this.btnGenerateReport.UseVisualStyleBackColor = false;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEndDate.Location = new System.Drawing.Point(964, 252);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(20, 22);
+            this.dtpEndDate.TabIndex = 53;
+            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpStartDate.Location = new System.Drawing.Point(910, 252);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(20, 22);
+            this.dtpStartDate.TabIndex = 54;
+            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Snow;
+            this.label2.Location = new System.Drawing.Point(866, 256);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 16);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "From:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Snow;
+            this.label3.Location = new System.Drawing.Point(936, 255);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 16);
+            this.label3.TabIndex = 57;
+            this.label3.Text = "To:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Dashboard
             // 
@@ -321,7 +414,6 @@
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
             this.pnlContent.ResumeLayout(false);
-            this.pnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecentActivities)).EndInit();
             this.ResumeLayout(false);
 
@@ -345,5 +437,12 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Label lblTopFinder;
+        private System.Windows.Forms.Label lblTopFinderCount;
+        private System.Windows.Forms.Button btnGenerateReport;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

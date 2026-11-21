@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FoundItemsUC));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.btnUploadImage = new Guna.UI2.WinForms.Guna2Button();
+            this.picItem = new System.Windows.Forms.PictureBox();
             this.dtpFoundDate = new System.Windows.Forms.DateTimePicker();
             this.btnCLaim = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,6 +57,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.guna2GradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoundItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +86,8 @@
             // 
             this.guna2GradientPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.guna2GradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.guna2GradientPanel2.Controls.Add(this.btnUploadImage);
+            this.guna2GradientPanel2.Controls.Add(this.picItem);
             this.guna2GradientPanel2.Controls.Add(this.dtpFoundDate);
             this.guna2GradientPanel2.Controls.Add(this.btnCLaim);
             this.guna2GradientPanel2.Controls.Add(this.label1);
@@ -109,11 +114,40 @@
             this.guna2GradientPanel2.Size = new System.Drawing.Size(344, 702);
             this.guna2GradientPanel2.TabIndex = 34;
             // 
+            // btnUploadImage
+            // 
+            this.btnUploadImage.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnUploadImage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUploadImage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUploadImage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUploadImage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUploadImage.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnUploadImage.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnUploadImage.ForeColor = System.Drawing.Color.White;
+            this.btnUploadImage.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadImage.Image")));
+            this.btnUploadImage.Location = new System.Drawing.Point(250, 163);
+            this.btnUploadImage.Name = "btnUploadImage";
+            this.btnUploadImage.Size = new System.Drawing.Size(43, 32);
+            this.btnUploadImage.TabIndex = 62;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
+            // 
+            // picItem
+            // 
+            this.picItem.BackColor = System.Drawing.Color.Transparent;
+            this.picItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picItem.Location = new System.Drawing.Point(105, 56);
+            this.picItem.Name = "picItem";
+            this.picItem.Size = new System.Drawing.Size(139, 139);
+            this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picItem.TabIndex = 61;
+            this.picItem.TabStop = false;
+            this.picItem.Click += new System.EventHandler(this.picItem_Click);
+            // 
             // dtpFoundDate
             // 
             this.dtpFoundDate.Font = new System.Drawing.Font("Arial Narrow", 12F);
             this.dtpFoundDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFoundDate.Location = new System.Drawing.Point(22, 293);
+            this.dtpFoundDate.Location = new System.Drawing.Point(24, 360);
             this.dtpFoundDate.Name = "dtpFoundDate";
             this.dtpFoundDate.Size = new System.Drawing.Size(299, 30);
             this.dtpFoundDate.TabIndex = 56;
@@ -126,9 +160,9 @@
             this.btnCLaim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCLaim.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCLaim.ForeColor = System.Drawing.Color.White;
-            this.btnCLaim.Location = new System.Drawing.Point(31, 630);
+            this.btnCLaim.Location = new System.Drawing.Point(31, 654);
             this.btnCLaim.Name = "btnCLaim";
-            this.btnCLaim.Size = new System.Drawing.Size(143, 53);
+            this.btnCLaim.Size = new System.Drawing.Size(143, 39);
             this.btnCLaim.TabIndex = 55;
             this.btnCLaim.Text = "Claim";
             this.btnCLaim.UseVisualStyleBackColor = false;
@@ -140,7 +174,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(19, 475);
+            this.label1.Location = new System.Drawing.Point(19, 531);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 24);
             this.label1.TabIndex = 54;
@@ -154,7 +188,7 @@
             this.cmbStatus.Items.AddRange(new object[] {
             "Claimed",
             "Unclaimed"});
-            this.cmbStatus.Location = new System.Drawing.Point(22, 502);
+            this.cmbStatus.Location = new System.Drawing.Point(22, 558);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(299, 32);
             this.cmbStatus.TabIndex = 53;
@@ -167,9 +201,9 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(180, 630);
+            this.btnDelete.Location = new System.Drawing.Point(180, 654);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(141, 53);
+            this.btnDelete.Size = new System.Drawing.Size(143, 39);
             this.btnDelete.TabIndex = 48;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -182,9 +216,9 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(180, 571);
+            this.btnUpdate.Location = new System.Drawing.Point(180, 609);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(141, 53);
+            this.btnUpdate.Size = new System.Drawing.Size(143, 39);
             this.btnUpdate.TabIndex = 47;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -197,9 +231,9 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(31, 571);
+            this.btnAdd.Location = new System.Drawing.Point(31, 609);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(143, 53);
+            this.btnAdd.Size = new System.Drawing.Size(143, 39);
             this.btnAdd.TabIndex = 46;
             this.btnAdd.Text = "Add Item";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -208,7 +242,7 @@
             // txtFinder
             // 
             this.txtFinder.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFinder.Location = new System.Drawing.Point(22, 430);
+            this.txtFinder.Location = new System.Drawing.Point(23, 494);
             this.txtFinder.Multiline = true;
             this.txtFinder.Name = "txtFinder";
             this.txtFinder.Size = new System.Drawing.Size(299, 34);
@@ -220,7 +254,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label8.Location = new System.Drawing.Point(18, 403);
+            this.label8.Location = new System.Drawing.Point(19, 467);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 24);
             this.label8.TabIndex = 43;
@@ -229,7 +263,7 @@
             // txtFoundLocation
             // 
             this.txtFoundLocation.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFoundLocation.Location = new System.Drawing.Point(23, 361);
+            this.txtFoundLocation.Location = new System.Drawing.Point(24, 430);
             this.txtFoundLocation.Multiline = true;
             this.txtFoundLocation.Name = "txtFoundLocation";
             this.txtFoundLocation.Size = new System.Drawing.Size(298, 34);
@@ -241,7 +275,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label9.Location = new System.Drawing.Point(19, 334);
+            this.label9.Location = new System.Drawing.Point(20, 403);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 24);
             this.label9.TabIndex = 41;
@@ -253,7 +287,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label10.Location = new System.Drawing.Point(18, 266);
+            this.label10.Location = new System.Drawing.Point(20, 333);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 24);
             this.label10.TabIndex = 37;
@@ -262,16 +296,16 @@
             // txtFoundDescription
             // 
             this.txtFoundDescription.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFoundDescription.Location = new System.Drawing.Point(22, 168);
+            this.txtFoundDescription.Location = new System.Drawing.Point(24, 289);
             this.txtFoundDescription.Multiline = true;
             this.txtFoundDescription.Name = "txtFoundDescription";
-            this.txtFoundDescription.Size = new System.Drawing.Size(299, 89);
+            this.txtFoundDescription.Size = new System.Drawing.Size(299, 41);
             this.txtFoundDescription.TabIndex = 36;
             // 
             // txtFoundName
             // 
             this.txtFoundName.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFoundName.Location = new System.Drawing.Point(22, 106);
+            this.txtFoundName.Location = new System.Drawing.Point(24, 229);
             this.txtFoundName.Multiline = true;
             this.txtFoundName.Name = "txtFoundName";
             this.txtFoundName.Size = new System.Drawing.Size(299, 34);
@@ -283,7 +317,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label11.Location = new System.Drawing.Point(18, 79);
+            this.label11.Location = new System.Drawing.Point(20, 202);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(94, 24);
             this.label11.TabIndex = 35;
@@ -295,11 +329,11 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label12.Location = new System.Drawing.Point(18, 145);
+            this.label12.Location = new System.Drawing.Point(20, 266);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(126, 24);
+            this.label12.Size = new System.Drawing.Size(129, 24);
             this.label12.TabIndex = 34;
-            this.label12.Text = "Item description";
+            this.label12.Text = "Item Description";
             // 
             // label13
             // 
@@ -307,7 +341,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Arial Narrow", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label13.Location = new System.Drawing.Point(14, 18);
+            this.label13.Location = new System.Drawing.Point(20, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(323, 43);
             this.label13.TabIndex = 33;
@@ -322,14 +356,14 @@
             this.dgvFoundItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFoundItems.BackgroundColor = System.Drawing.Color.White;
             this.dgvFoundItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFoundItems.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFoundItems.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFoundItems.Location = new System.Drawing.Point(33, 184);
             this.dgvFoundItems.Name = "dgvFoundItems";
             this.dgvFoundItems.RowHeadersVisible = false;
@@ -378,6 +412,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.guna2GradientPanel2.ResumeLayout(false);
             this.guna2GradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoundItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -411,5 +446,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCLaim;
         private System.Windows.Forms.DateTimePicker dtpFoundDate;
+        private System.Windows.Forms.PictureBox picItem;
+        private Guna.UI2.WinForms.Guna2Button btnUploadImage;
     }
 }

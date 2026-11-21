@@ -80,37 +80,54 @@ namespace FINAL_MINSUFINDER
 
         public static void LoadLostItems(DataGridView dgv)
         {
-            string query = "SELECT LostItemID, ItemName, ItemDescription, DateLost, LastLocation, ItemOwner, Status FROM LostItems";
+            string query = @"SELECT LostItemID, ItemName, ItemDescription,
+                     DateLost, LastLocation, ItemOwner, Status, ImagePath
+                     FROM LostItems";
+
             dgv.DataSource = GetTable(query);
-            if (dgv.Columns["LostItemID"] != null) dgv.Columns["LostItemID"].Visible = false;
+            if (dgv.Columns["LostItemID"] != null)dgv.Columns["LostItemID"].Visible = false;
+
         }
 
-        public static bool AddLostItem(string name, string desc, DateTime dateLost, string location, string owner, string status)
+        public static bool AddLostItem(string name, string desc, DateTime dateLost,
+    string location, string owner, string status, string imagePath)
         {
             string finalStatus = string.IsNullOrWhiteSpace(status) ? "Lost" : status.Trim();
-            string query = @"INSERT INTO LostItems (ItemName, ItemDescription, DateLost, LastLocation, ItemOwner, Status) 
-                             VALUES (@Name, @Desc, @Date, @Loc, @Owner, @Status)";
-            return RunQuery(query, cmd => {
+
+            string query = @"INSERT INTO LostItems
+                     (ItemName, ItemDescription, DateLost, LastLocation, ItemOwner, Status, ImagePath)
+                     VALUES
+                     (@Name, @Desc, @Date, @Loc, @Owner, @Status, @ImagePath)";
+
+            return RunQuery(query, cmd =>
+            {
                 cmd.Parameters.AddWithValue("@Name", name.Trim());
                 cmd.Parameters.AddWithValue("@Desc", desc.Trim());
                 cmd.Parameters.AddWithValue("@Date", dateLost);
                 cmd.Parameters.AddWithValue("@Loc", location.Trim());
                 cmd.Parameters.AddWithValue("@Owner", owner.Trim());
                 cmd.Parameters.AddWithValue("@Status", finalStatus);
+                cmd.Parameters.AddWithValue("@ImagePath",
+                    string.IsNullOrWhiteSpace(imagePath) ? (object)DBNull.Value : imagePath);
             });
         }
 
-        public static bool UpdateLostItem(int id, string name, string desc, DateTime dateLost, string location, string owner, string status)
+        public static bool UpdateLostItem(int id, string name, string desc,
+     DateTime dateLost, string location, string owner, string status, string imagePath)
         {
-            string query = @"UPDATE LostItems SET ItemName = @Name, ItemDescription = @Desc, DateLost = @Date, 
-                             LastLocation = @Loc, ItemOwner = @Owner, Status = @Status WHERE LostItemID = @ID";
-            return RunQuery(query, cmd => {
+            string query = @"UPDATE LostItems SET ItemName = @Name, ItemDescription = @Desc, DateLost = @Date, LastLocation = @Loc,
+                     ItemOwner = @Owner, Status = @Status, ImagePath = @ImagePath WHERE LostItemID = @ID";
+
+            return RunQuery(query, cmd =>
+            {
                 cmd.Parameters.AddWithValue("@Name", name.Trim());
                 cmd.Parameters.AddWithValue("@Desc", desc.Trim());
                 cmd.Parameters.AddWithValue("@Date", dateLost);
                 cmd.Parameters.AddWithValue("@Loc", location.Trim());
                 cmd.Parameters.AddWithValue("@Owner", owner.Trim());
                 cmd.Parameters.AddWithValue("@Status", status);
+                cmd.Parameters.AddWithValue("@ImagePath",
+                    string.IsNullOrWhiteSpace(imagePath) ? (object)DBNull.Value : imagePath);
                 cmd.Parameters.AddWithValue("@ID", id);
             });
         }
@@ -122,15 +139,19 @@ namespace FINAL_MINSUFINDER
 
         public static void LoadFoundItems(DataGridView dgv)
         {
-            string query = "SELECT FoundItemID, ItemName, ItemDescription, DateFound, FoundLocation, Founder, Status FROM FoundItems";
+            string query = @"SELECT FoundItemID, ItemName, ItemDescription, DateFound, FoundLocation, Founder, Status, ImagePath FROM FoundItems";
             dgv.DataSource = GetTable(query);
-            if (dgv.Columns["FoundItemID"] != null) dgv.Columns["FoundItemID"].Visible = false;
+
+            dgv.Columns["FoundItemID"].Visible = false;
         }
 
-        public static bool AddFoundItem(string name, string desc, DateTime dateFound, string location, string founder, string status = "Unclaimed", int lostItemId = -1)
+
+
+
+        public static bool AddFoundItem(string name, string desc, DateTime dateFound, string location, string founder, string status = "Unclaimed", string imagePath = null, int lostItemId = -1)
         {
-            string query = @"INSERT INTO FoundItems (ItemName, ItemDescription, DateFound, FoundLocation, Founder, Status)
-                             VALUES (@Name, @Desc, @Date, @Loc, @Founder, @Status)";
+            string query = @"INSERT INTO FoundItems (ItemName, ItemDescription, DateFound, FoundLocation, Founder, Status, ImagePath)
+                             VALUES (@Name, @Desc, @Date, @Loc, @Founder, @Status, @ImagePath)";
             bool inserted = RunQuery(query, cmd => {
                 cmd.Parameters.AddWithValue("@Name", name.Trim());
                 cmd.Parameters.AddWithValue("@Desc", desc.Trim());
@@ -138,6 +159,7 @@ namespace FINAL_MINSUFINDER
                 cmd.Parameters.AddWithValue("@Loc", location.Trim());
                 cmd.Parameters.AddWithValue("@Founder", founder.Trim());
                 cmd.Parameters.AddWithValue("@Status", status);
+                cmd.Parameters.AddWithValue("@ImagePath", string.IsNullOrWhiteSpace(imagePath) ? (object)DBNull.Value : imagePath);
             });
 
             if (inserted && lostItemId != -1)
@@ -147,10 +169,10 @@ namespace FINAL_MINSUFINDER
             return inserted;
         }
 
-        public static bool UpdateFoundItem(int id, string name, string desc, DateTime dateFound, string location, string founder, string status)
+        public static bool UpdateFoundItem(int id, string name, string desc, DateTime dateFound, string location, string founder, string status, string imagePath = null)
         {
             string query = @"UPDATE FoundItems SET ItemName = @Name, ItemDescription = @Desc, DateFound = @Date, 
-                             FoundLocation = @Loc, Founder = @Founder, Status = @Status WHERE FoundItemID = @ID";
+                             FoundLocation = @Loc, Founder = @Founder, Status = @Status, ImagePath = @ImagePath WHERE FoundItemID = @ID";
             return RunQuery(query, cmd => {
                 cmd.Parameters.AddWithValue("@Name", name.Trim());
                 cmd.Parameters.AddWithValue("@Desc", desc.Trim());
@@ -158,6 +180,7 @@ namespace FINAL_MINSUFINDER
                 cmd.Parameters.AddWithValue("@Loc", location.Trim());
                 cmd.Parameters.AddWithValue("@Founder", founder.Trim());
                 cmd.Parameters.AddWithValue("@Status", status);
+                cmd.Parameters.AddWithValue("@ImagePath", string.IsNullOrWhiteSpace(imagePath) ? (object)DBNull.Value : imagePath);
                 cmd.Parameters.AddWithValue("@ID", id);
             });
         }
@@ -169,7 +192,7 @@ namespace FINAL_MINSUFINDER
 
         public static void LoadClaims(DataGridView dgv)
         {
-            string query = @"SELECT ClaimID, OwnerFullName, ClaimantFullName, DateClaimed, ItemName, FinderFullName 
+            string query = @"SELECT OwnerFullName, ClaimantFullName, DateClaimed, ItemName, FinderFullName 
                              FROM Claims ORDER BY ClaimID DESC";
             dgv.DataSource = GetTable(query);
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -232,6 +255,14 @@ namespace FINAL_MINSUFINDER
                              HAVING LTRIM(RTRIM(Founder)) IS NOT NULL AND LTRIM(RTRIM(Founder)) <> '' 
                              ORDER BY [Items Reported] DESC";
 
+            return GetTable(query);
+        }
+
+        public static DataTable GetTopFinder()
+        {
+            string query = @"SELECT TOP 1 LTRIM(RTRIM(Founder)) AS FullName, COUNT(*) AS ItemsReported, COUNT(*) * 10 AS TotalPoints
+            FROM FoundItems WHERE Founder IS NOT NULL AND LTRIM(RTRIM(Founder)) <> ''
+            GROUP BY LTRIM(RTRIM(Founder)) ORDER BY COUNT(*) DESC";
             return GetTable(query);
         }
     }
