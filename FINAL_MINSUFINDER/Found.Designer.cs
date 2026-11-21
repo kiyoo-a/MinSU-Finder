@@ -101,6 +101,7 @@
             // 
             // dtpFoundDate
             // 
+            this.dtpFoundDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFoundDate.Location = new System.Drawing.Point(22, 349);
             this.dtpFoundDate.Name = "dtpFoundDate";
             this.dtpFoundDate.Size = new System.Drawing.Size(299, 22);

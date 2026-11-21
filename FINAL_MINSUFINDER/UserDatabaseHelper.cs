@@ -265,5 +265,53 @@ namespace FINAL_MINSUFINDER
             GROUP BY LTRIM(RTRIM(Founder)) ORDER BY COUNT(*) DESC";
             return GetTable(query);
         }
+
+        public static string GetMostCommonLocation(DateTime startDate, DateTime endDate)
+        {
+            // Adjust DateLost / DateFound if your date columns use different names
+            const string query = @"
+        SELECT TOP 1 Location, COUNT(*) AS TotalCount
+        FROM (
+            SELECT LastLocation AS Location FROM LostItems
+            WHERE LastLocation IS NOT NULL AND LTRIM(RTRIM(LastLocation)) <> ''
+              AND DateLost >= @StartDate AND DateLost <= @EndDate
+            UNION ALL
+            SELECT FoundLocation AS Location FROM FoundItems
+            WHERE FoundLocation IS NOT NULL AND LTRIM(RTRIM(FoundLocation)) <> ''
+              AND DateFound >= @StartDate AND DateFound <= @EndDate
+        ) AS CombinedLocations
+        GROUP BY Location
+        ORDER BY TotalCount DESC, Location ASC";
+
+            try
+            {
+                DatabaseConnection db = new DatabaseConnection();
+                using (SqlConnection con = db.GetConnection())
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@StartDate", SqlDbType.DateTime) { Value = startDate.Date });
+                        cmd.Parameters.Add(new SqlParameter("@EndDate", SqlDbType.DateTime) { Value = endDate.Date.AddDays(1).AddTicks(-1) });
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string place = reader["Location"].ToString();
+                                int count = Convert.ToInt32(reader["TotalCount"]);
+                                return $"{place} ({count} {(count == 1 ? "item" : "items")})";
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error finding top location: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return "N/A";
+        }
     }
 }
